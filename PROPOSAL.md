@@ -9,7 +9,7 @@ My app is called "Wordle-ish". It's a word puzzle game for players who enjoy tes
 
 **Wireframes**
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/358b3091-f0b2-4791-ba64-b19baebc45ce/7f68965f-1e68-4fb4-99f4-6dd399d2a417/Untitled.png)
+https://imgur.com/a/leSmLBk
 
 **User Stories**
 
