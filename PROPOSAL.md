@@ -37,21 +37,14 @@ https://imgur.com/a/leSmLBk
 
 **Timeline** 
 
-| Day | Task | Blockers | Notes |
-| --- | --- | --- | --- |
-| Weekend | - Create Proposal
-- Setup Notion Project Board
-- Create Github Repo and initial files
-- Set Up 1:1 with Emre
-- Pseudocode Game |  |  |
-| Monday | - Present and finalize proposal |  |  |
-| Tuesday | Create basic Scaffolding:
-- HTML: Create page elements 
-- JS: Define Variables, Cache Elements, Create Event Listeners |  |  |
-| Wednesday | - Add Functionality |  |  |
-| Thursday | - Continue Adding Functionality + Debugging
-- Add Styling |  |  |
-| Friday | - Finalize MVP |  |  |
-| Saturday | - Work on Stretch Goals |  |  |
-| Sunday | - Work on Stretch Goals |  |  |
-| Monday | - Present Game to Class |  |  |
+| Day       | Task                                                                                                                                                       | Blockers | Notes |
+|-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------|
+| Weekend   | - Create Proposal; - Setup Notion Project Board; - Create Github Repo and initial files; - Set Up 1:1 with Emre; - Pseudocode Game                         |          |       |
+| Monday    | - Present and finalize proposal                                                                                                                            |          |       |
+| Tuesday   | Create basic Scaffolding: - HTML: Create page elements; - JS: Define Variables, Cache Elements, Create Event Listeners                                     |          |       |
+| Wednesday | - Add Functionality                                                                                                                                        |          |       |
+| Thursday  | - Continue Adding Functionality + Debugging; - Add Styling                                                                                                 |          |       |
+| Friday    | - Finalize MVP                                                                                                                                             |          |       |
+| Saturday  | - Work on Stretch Goals                                                                                                                                    |          |       |
+| Sunday    | - Work on Stretch Goals                                                                                                                                    |          |       |
+| Monday    | - Present Game to Class                                                                                                                                    |          |       |
