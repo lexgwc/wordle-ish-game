@@ -20,7 +20,7 @@ class LetterObj {
 let keysStatus = []
 
 function generateKeysStatus() {
-    let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz'
     for(let i=0;i<alphabet.length; i++) {
         const letter = alphabet[i]
         const status = 'Not Guessed'
@@ -163,7 +163,7 @@ console.log(board)
 console.log(keysStatus)
 
 board = [
-    ['B','L','A','C','K'],
+    ['b','l','a','c','k'],
     [null, null, null, null, null],
     [null, null, null, null, null],
     [null, null, null, null, null],
@@ -243,21 +243,22 @@ function updateKeysStatus() {
             return;
         } 
         turn.forEach(function(guessLetter, letterIndex) {
-            console.log('Guess letter:', guessLetter);
-            const letterObj = keysStatus.find(obj => obj.letter === guessLetter);
-            console.log('Letter object:', letterObj);
+            console.log(guessLetter);
+            const letterObject = keysStatus.find(obj => obj.letter === guessLetter);
+            console.log('Letter object:', letterObject);
             const correctIndices = []
             targetWord.split('').forEach((letter, index) => {
-                if (letter === guessLetter) {
+                console.log(letter)
+                if (letter === guessLetter) { //THINK THERE IS A PROBLEM HERE, guessletter is an object but letter is a string
                     correctIndices.push(index);
                 }
             });
             if (correctIndices.length === 0) {
-                letterObj.status = "Incorrect";
+                letterObject.status = "Incorrect";
             } else if (correctIndices.includes(letterIndex)) {
-                letterObj.status = "Correctly Placed";
+                letterObject.status = "Correctly Placed";
             } else {
-                letterObj.status = "Incorrectly Placed";
+                letterObject.status = "Incorrectly Placed";
             }
         });
     });
