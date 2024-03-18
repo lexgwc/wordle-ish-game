@@ -1,0 +1,176 @@
+.container {  
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1.4fr 0.9fr 0.9fr 0.9fr 0.9fr 0.9fr 0.9fr 0.4fr 2.5fr 0.3fr;
+    gap: 0px 0px;
+    height: 100vh;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "leftBorder Title Title Title Title Title rightBorder"
+      "leftBorder sq0 sq1 sq2 sq3 sq4 rightBorder"
+      "leftBorder sq5 sq6 sq7 sq8 sq9 rightBorder"
+      "leftBorder sq10 sq11 sq12 sq13 sq14 rightBorder"
+      "leftBorder sq15 sq16 sq17 sq18 sq19 rightBorder"
+      "leftBorder sq20 sq21 sq22 sq23 sq24 rightBorder"
+      "leftBorder sq25 sq26 sq27 sq28 sq29 rightBorder"
+      "leftBorder middleBorder middleBorder middleBorder middleBorder middleBorder rightBorder"
+      "leftBorder keyboard keyboard keyboard keyboard keyboard rightBorder"
+      "leftBorder bottomBorder bottomBorder bottomBorder bottomBorder bottomBorder rightBorder";
+  }
+  
+
+  .sq0, .sq1, .sq2, .sq3, .sq4, .sq5, .sq6, .sq7, .sq8, .sq9, .sq10, .sq11, .sq12, .sq13, .sq14, .sq15, .sq16, .sq17, .sq18, .sq19, .sq20, .sq21, .sq22, .sq23, .sq24, .sq25, .sq26, .sq27, .sq28, .sq29 {
+    background-color: aquamarine;
+    border: 3px solid black;
+  }  
+
+  .keyboard { 
+    grid-area: keyboard; 
+    background-color: aquamarine;
+    border: 3px solid black;
+  }
+  
+  .Title { 
+    grid-area: Title; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+  }
+  
+  .leftBorder { 
+    grid-area: leftBorder; 
+  }
+  
+  .rightBorder { 
+    grid-area: rightBorder; 
+  }
+  
+  .middleBorder { 
+    grid-area: middleBorder; 
+  }
+  
+  .bottomBorder { 
+    grid-area: bottomBorder; 
+  }
+  
+  .sq0 { 
+    grid-area: sq0; 
+  }
+  
+  .sq1 { 
+    grid-area: sq1; 
+  }
+  
+  .sq2 { 
+    grid-area: sq2; 
+  }
+  
+  .sq3 { 
+    grid-area: sq3; 
+  }
+  
+  .sq4 { 
+    grid-area: sq4; 
+  }
+  
+  .sq5 { 
+    grid-area: sq5; 
+  }
+  
+  .sq6 { 
+    grid-area: sq6; 
+  }
+  
+  .sq7 { 
+    grid-area: sq7; 
+  }
+  
+  .sq8 { 
+    grid-area: sq8; 
+  }
+  
+  .sq9 { 
+    grid-area: sq9; 
+  }
+  
+  .sq10 { 
+    grid-area: sq10; 
+  }
+  
+  .sq11 { 
+    grid-area: sq11; 
+  }
+  
+  .sq12 { 
+    grid-area: sq12; 
+  }
+  
+  .sq13 { 
+    grid-area: sq13; 
+  }
+  
+  .sq14 { 
+    grid-area: sq14; 
+  }
+  
+  .sq15 { 
+    grid-area: sq15; 
+  }
+  
+  .sq16 { 
+    grid-area: sq16; 
+  }
+  
+  .sq17 { 
+    grid-area: sq17; 
+  }
+  
+  .sq18 { 
+    grid-area: sq18; 
+  }
+  
+  .sq19 { 
+    grid-area: sq19; 
+  }
+  
+  .sq20 { 
+    grid-area: sq20; 
+  }
+  
+  .sq21 { 
+    grid-area: sq21; 
+  }
+  
+  .sq22 { 
+    grid-area: sq22; 
+  }
+  
+  .sq23 { 
+    grid-area: sq23; 
+  }
+  
+  .sq24 { 
+    grid-area: sq24; 
+  }
+  
+  .sq25 { 
+    grid-area: sq25; 
+  }
+  
+  .sq26 { 
+    grid-area: sq26; 
+  }
+  
+  .sq27 { 
+    grid-area: sq27; 
+  }
+  
+  .sq28 { 
+    grid-area: sq28; 
+  }
+  
+  .sq29 { 
+    grid-area: sq29; 
+  }
+    
