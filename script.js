@@ -150,12 +150,37 @@ let gameOver
 
 
 //     1. Create **variable** messageEl to represent the element that shows the game status
-let messageEl = document.getElementById('')
+let messageEl = document.getElementById('gameStatus')
+console.log(messageEl.innerText)
 //     2. Create **variable** keyEls to represent the lettered keys on keyboard
+let keyEls=document.getElementsByClassName('keyBtn')
+
+//GET RID OF THIS LATER
+let alphabetArr=[]
+for (let i = 0; i < keyEls.length; i++) {
+    alphabetArr.push(keyEls[i].innerText)
+}
+console.log(alphabetArr);
+// GET RID UP TO HERE
+
 //     3. Create **variable** squareEls to represent the squares on the board
+let squareEls = document.getElementsByClassName('squareEl')
+console.log(squareEls)
+
 //     4. Create **variable** submitBtn to represent the enter button on keyboard
+let submitBtn=document.getElementById('submitBtn')
+console.log(submitBtn)
 //     5. Create **variable** deleteEl to represent the backspace key on keyboard
+let deleteBtn=document.getElementById('deleteBtn')
+console.log(deleteBtn)
+
 //     6. Create **variable** resetBtn to represent the Play Again button on the keyboard
+
+let resetBtn=document.getElementById('resetBtn')
+console.log(resetBtn)
+
+// ________________________________________________________________________________________________________________
+
 // 3. Upon loading, the game state should be initialized, and a function should be
 // called to render this game state
 //     1. Create init() function and inside it, initialize variables:

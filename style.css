@@ -43,7 +43,7 @@
     background-color: aquamarine;
     border: 3px solid black;
     display: flex;
-    gap: 25px;
+    gap: 5px;
     flex-wrap: wrap;
   }
   
