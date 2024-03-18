@@ -53,7 +53,7 @@ console.log(keysStatus)
             
 //     3. Use a variable named `turn` to track which turn it is (and therefore which line the guess letters will go in)
 
-let turn
+let guessNum
 //     4. Use an array named wordOptions to store 5-letter words
 const wordOptions = [
     "apple", "baker", "candy", "dance", "eagle", "frost", "grape", "happy", "jelly", "kitty",
@@ -141,7 +141,7 @@ function init() {
     ]
     generateKeysStatus()
     console.log(keysStatus)
-    turn=1
+    guessNum=1
     correctlyGuessed=false
     gameOver=false
     function generateTargetWord() {
@@ -160,16 +160,33 @@ function init() {
 
 console.log(board)
 
+console.log(keysStatus)
+
+board = [
+    ['B','L','A','C','K'],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+]
+
+updateKeysStatus()
+
+keysStatus.forEach(obj => console.log(obj))
+
 //     2. Create render() function and call at end of init(). Set aside for now
 
 // 4. Create Render function 
 
-
+/* 
 function render() {
+    updateKeysStatus()
     updateKeysColor()
     updateSquaresColor()
     updateMessage()
 }
+*/
 //     1. Inside render function:
         
 //         ```jsx
@@ -183,7 +200,7 @@ function render() {
         
 //     2. Create `updateBoard` function. **(this should change the color of squareEls based on keysStatus)**
 
-function updateKeysColor() {
+function updateKeysColor() {}
 // foreach loop over board array
 // for each subarray(choice), if subarray index (board[i]) is NOT equal to turn-1, then return out of function
 // else if subarray index (board[i]) IS equal to turn-1, then:
@@ -221,38 +238,75 @@ function updateKeysColor() {
 //     3. Create a function that **updates the keysStatus** based on whether clicked key’s (target element’s) innerText is: Contained in targetWord and correctly placed, Contained in targetWord and incorrectly placed, Not contained in targetWord
 
 function updateKeysStatus() {
-    board.forEach(function(turn) {
-        if(indexOf(turn)!==turn-1) {
+    board.forEach(function(turn, turnIndex) {
+        if (turnIndex !== guessNum - 1) {
+            return;
+        } 
+        turn.forEach(function(guessLetter, letterIndex) {
+            console.log('Guess letter:', guessLetter);
+            const letterObj = keysStatus.find(obj => obj.letter === guessLetter);
+            console.log('Letter object:', letterObj);
+            const correctIndices = []
+            targetWord.split('').forEach((letter, index) => {
+                if (letter === guessLetter) {
+                    correctIndices.push(index);
+                }
+            });
+            if (correctIndices.length === 0) {
+                letterObj.status = "Incorrect";
+            } else if (correctIndices.includes(letterIndex)) {
+                letterObj.status = "Correctly Placed";
+            } else {
+                letterObj.status = "Incorrectly Placed";
+            }
+        });
+    });
+}
+
+
+/* OLD CODE FOR UPDATEKEYSSTATUS
+function updateKeysStatus() {
+    board.forEach(function(turn,turnIndex) {
+        if(turnIndex !== guessNum-1 ) {
             return
-        } else if(indexOf(turn)===turn-1) {
-            turn.forEach(guessLetter) {
-                if (targetWord.includes(guessLetter)) {
-                    if(targetWord.indexOf(guessLetter)===turn.indexOf(guessLetter)) {
-                        if(keysStatus[letter]=guessLetter) {
-                            this.status="Correctly Placed"
-                    } else {
-                        if(keysStatus[letter]=guessLetter) {
-                            this.status="Incorrectly Placed"
-                    }
-                }
-                else if(keysStatus[letter]=guessLetter) {
-                    this.status="Incorrect"
-                }
+        } 
+        turn.forEach(function(guessLetter, letterIndex) {
+            console.log('Guess letter:', guessLetter)
+            const letterObj = keysStatus.find(obj => obj.letter === guessLetter)
+            console.log('Letter object:', letterObj);
+            const correctIndices = targetWord.indexOf(guessLetter);
+            if (correctIndex === idx) {
+                letterObj.status = "Correctly Placed";
+            } else if (correctIndex !== -1) {
+                letterObj.status = "Incorrectly Placed";
+            } else {
+                letterObj.status = "Incorrect";
             }
         })
     }
-    }
-for each board subarray(turn), if subarray index (board[i]) is NOT equal to turn-1, then return out of function
-else if subarray index (board[i]) IS equal to turn-1, then:
-nested forEach on subarray (choice). For each letter in choice:
-if targetWord.includes(choiceLetter) {
-} else this.status="Incorrect"
 }
-}
+        
+        (function(guessLetter,index) {
+            console.log('Guess letter:', guessLetter);
+            const letterObj = keysStatus.find(obj => obj.letter === guessLetter)
+            console.log('Letter object:', letterObj);
+            if (targetWord.includes(guessLetter)) {
+                const correctIndex=targetWord.indexOf(guessLetter)
+                if(correctIndex===turn.indexOf(guessLetter)) {
+                        letterObj.status="Correctly Placed"
+                    } else {
+                        letterObj.status="Incorrectly Placed"
+                    }
+                } else {
+                    letterObj.status="Incorrect"
+                }
+            })
+
+*/
+
 
 
 // 9. Handle a player clicking the submitBtn with handleSubmit function:
 //     1. Call render function
 //     2. Call turnsplayed() function
 //     3. Create and call isGameOver function
-//
