@@ -29,7 +29,6 @@ function generateKeysStatus() {
     return keysStatus
 }
 
-generateKeysStatus()
 console.log(keysStatus)
 
 //         1. e.g.:
@@ -56,87 +55,24 @@ console.log(keysStatus)
 let turn
 //     4. Use an array named wordOptions to store 5-letter words
 const wordOptions = [
-    "apple",
-    "baker",
-    "candy",
-    "daisy",
-    "eagle",
-    "frost",
-    "grape",
-    "happy",
-    "jelly",
-    "kitty",
-    "lemon",
-    "magic",
-    "noble",
-    "ocean",
-    "piano",
-    "queen",
-    "roses",
-    "sunny",
-    "tiger",
-    "umbra",
-    "vocal",
-    "water",
-    "zebra",
-    "dance",
-    "laugh",
-    "dream",
-    "learn",
-    "music",
-    "shine",
-    "spark",
-    "trust",
-    "brave",
-    "clean",
-    "calm",
-    "deep",
-    "fast",
-    "loud",
-    "rich",
-    "true",
-    "warm",
-    "wise",
-    "wild",
-    "kind",
-    "bold",
-    "cool",
-    "dear",
-    "fair",
-    "fine",
-    "free",
-    "full",
-    "good",
-    "hard",
-    "high",
-    "huge",
-    "last",
-    "live",
-    "long",
-    "open",
-    "real",
-    "rich",
-    "safe",
-    "shut",
-    "soft",
-    "tall",
-    "wild",
-    "dark",
-    "firm",
-    "flat",
-    "full",
-    "kind",
-    "late",
-    "loud",
-    "mild",
-    "neat",
-    "rich",
-    "sane",
-    "slow",
-    "vast",
-    "wild"
+    "apple", "baker", "candy", "dance", "eagle", "frost", "grape", "happy", "jelly", "kitty",
+    "lemon", "magic", "noble", "ocean", "piano", "queen", "roses", "sunny", "tiger", "umbra",
+    "vocal", "water", "zebra", "angry", "black", "clean", "dream", "early", "fancy", "great",
+    "happy", "jolly", "kind", "lucky", "merry", "nasty", "olive", "proud", "quick", "rusty",
+    "shiny", "tidy", "ugly", "vivid", "white", "young", "zebra", "abide", "bring", "catch",
+    "drink", "enjoy", "fight", "gather", "hover", "joust", "knit", "laugh", "mourn",
+    "offer", "print", "query", "relax", "surge", "travel", "upend", "value", "whirl", "xerox",
+    "yank", "zipper", "allow", "bloom", "chase", "dodge", "expand", "flirt", "gather", "heal",
+    "ignite", "juggle", "knock", "listen", "mimic", "nuzzle", "organ", "ponder", "quell",
+    "relax", "savor", "thrust", "uphold", "visit", "whisk", "x-ray", "yearn", "zoom","longword","hi"
 ]
 
+function filterWords(wordOptions) {
+    return wordOptions.filter(word => word.length === 5)
+}
+
+let filteredWordOptions=filterWords(wordOptions)
+console.log(filteredWordOptions)
 //     5. Use a variable named targetWord to store the word the player is supposed to guess, from the wordOptions list of 5-letter words
 
 let targetWord 
@@ -181,7 +117,11 @@ console.log(resetBtn)
 
 // ________________________________________________________________________________________________________________
 
-// 3. Upon loading, the game state should be initialized, and a function should be
+// 3. Upon loading, the game state should be initialized,
+
+window.onload = init()
+
+// and a function should be
 // called to render this game state
 //     1. Create init() function and inside it, initialize variables:
 //         1. board array should contain all nulls
@@ -189,11 +129,44 @@ console.log(resetBtn)
 //         3. turn variable should equal 1
 //         4. correctlyGuessed variable should be set to false
 //         5. gameOver variable should be set to false
+function init() {
+    board = [
+        [null,null,null,null,null],
+        [null,null,null,null,null],
+        [null,null,null,null,null],
+        [null,null,null,null,null],
+        [null,null,null,null,null],
+        [null,null,null,null,null]
+    ]
+    generateKeysStatus()
+    console.log(keysStatus)
+    turn=1
+    correctlyGuessed=false
+    gameOver=false
+    function generateTargetWord() {
+        let index = Math.floor(Math.random()*100)
+        targetWord=filteredWordOptions[index]
+    }
+    generateTargetWord()
+    console.log("Target word is: " + targetWord)
+    console.log("Target word length is " + targetWord.length)
+    if (targetWord.length!==5) {
+        generateTargetWord()
+    }
+    render()
+}
+
+
 //     2. Create render() function and call at end of init(). Set aside for now
-//     3. Choose targetWord from wordOptions —>
-//         1. let index = mathrandom number out of 100
-//         2. use that number to choose index of wordOptions e.g. wordOptions[index]
+
 // 4. Create Render function 
+
+function render() {
+    updateBoard()
+    updateKeysColor()
+    updateSquaresColor()
+    updateMessage()
+}
 //     1. Inside render function:
         
 //         ```jsx
@@ -206,6 +179,11 @@ console.log(resetBtn)
 //         ```
         
 //     2. Create `updateBoard` function. **(this should change the color of squareEls based on keysStatus)**
+
+function updateKeysColor() {
+    
+}
+
 //         1. Create UpdateBoard function *—— do I need this?*
 //         2. **Update colors of keys on keyboard -** Create an updateKeysColor function that changes color of keyEls based on keysStatus 
 //             - In `updateBoard` function, loop over `board` and for each element:
