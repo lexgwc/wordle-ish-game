@@ -24,10 +24,27 @@
     border: 3px solid black;
   }  
 
+#submitBtn, #deleteBtn{
+    width: 100px;
+}
+  .keyBtn {
+    height: 30px;
+    width: 60px;
+    margin: 10px;
+  }
+
+  .keyBtn:hover {
+    background-color:cadetblue;
+    cursor: pointer;
+  }
+
   .keyboard { 
     grid-area: keyboard; 
     background-color: aquamarine;
     border: 3px solid black;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
   }
   
   .Title { 
@@ -36,6 +53,8 @@
     justify-content: center;
     align-items: center;
     font-size: 50px;
+    padding: 0px;
+    margin: 10px;
   }
   
   .leftBorder { 
