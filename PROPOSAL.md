@@ -26,6 +26,7 @@ https://imgur.com/a/leSmLBk
 
 **Stretch Goals**
 
+- As a player, I want to be able to input with keys as well as clicking the keyboard
 - As a player, I want sound effects for letter inputs.
 - As a player, I want to hear different sounds for guesses with correct letters, vs guesses with no correct letters.
 - As a player, I want to see confetti if I guess the correct word before running out of guesses.
@@ -37,14 +38,14 @@ https://imgur.com/a/leSmLBk
 
 **Timeline** 
 
-| Day       | Task                                                                                                                                                       | Blockers | Notes |
-|-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------|
-| Weekend   | - Create Proposal; - Setup Notion Project Board; - Create Github Repo and initial files; - Set Up 1:1 with Emre; - Pseudocode Game                         |          |       |
-| Monday    | - Present and finalize proposal                                                                                                                            |          |       |
-| Tuesday   | Create basic Scaffolding: - HTML: Create page elements; - JS: Define Variables, Cache Elements, Create Event Listeners                                     |          |       |
-| Wednesday | - Add Functionality                                                                                                                                        |          |       |
-| Thursday  | - Continue Adding Functionality + Debugging; - Add Styling                                                                                                 |          |       |
-| Friday    | - Finalize MVP                                                                                                                                             |          |       |
-| Saturday  | - Work on Stretch Goals                                                                                                                                    |          |       |
-| Sunday    | - Work on Stretch Goals                                                                                                                                    |          |       |
-| Monday    | - Present Game to Class                                                                                                                                    |          |       |
+| Day       | Task                                                          | Blockers   | Notes                            |
+|-----------|---------------------------------------------------------------|------------|----------------------------------|
+| Weekend   | - Create Proposal; <br>- Setup Notion Project Board; <br>- Create Github Repo and initial files; <br>- Set Up 1:1 with Emre; |            |                                  |
+| Monday    | - Pseudocode <br>- Present and finalize proposal              |            |                                  |
+| Tuesday   | - Create basic Scaffolding: <br>- HTML: Create page elements; <br>- JS: Define Variables, Cache Elements, Create Event Listeners |            |                                  |
+| Wednesday | - Add Functionality <br>- MVP Done <br>- Add Styling          |            |                                  |
+| Thursday  | - Debugging; <br>- Finalize MVP                               |            |                                  |
+| Friday    | - README                                                      |            |                                  |
+| Saturday  | - Styling <br>- Work on Stretch Goals                        |            |                                  |
+| Sunday    | - Styling <br>- Work on Stretch Goals                        |            |                                  |
+| Monday    | - Present Game to Class                                       |            |                                  |
