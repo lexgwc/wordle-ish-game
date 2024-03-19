@@ -140,14 +140,14 @@ console.log(keysStatus)
 
 board = [   //---->REMOVE ALL OF THIS LATER
     ['b','l','a','c','k'],
-    ['w', 'h','i','t', 'e'],
+    ['w', 'h','i',null, null],
     [null, null, null, null, null],
     [null, null, null, null, null],
     [null, null, null, null, null],
     [null, null, null, null, null],
 ]
 
-updateKeysStatus() //---->REMOVE ALL OF THIS LATER
+//updateKeysStatus() //---->REMOVE ALL OF THIS LATER
 
 keysStatus.forEach(obj => console.log(obj))
 
@@ -218,7 +218,7 @@ function updateSquaresColor() {
     }
 }
 
-updateSquaresColor()
+updateSquaresColor() // -----> REMOVE LATER
 
 
 // [ ] 4. Create `updateMessage` function
@@ -242,16 +242,29 @@ function turnsPlayed() {
 }
 
 
-// Create handleClick function that handles player clicking on keyboard
+// [ ] Create handleClick function that handles player clicking on keyboard
 
 function handleClick(event) {
     console.log(event.target.innerText + " was clicked!")
-    // updateBoardArr()
+    updateBoardArr(event)
+    console.log(board)
     // updateBoard() 
 }
-// [ ] 1. **Update the values in the board array** with the same letter contained in the click target element’s (key’s) innerText
 
-function updateBoardArr() {}
+// [P1] 1. **Update the values in the board array** with the same letter contained in the click target element’s (key’s) innerText
+
+function updateBoardArr(event) {
+    board.forEach(function(turn,turnIndex) {
+    if(turnIndex === guessNum - 1) {
+        let firstNullIndex=turn.findIndex(guessLetter => guessLetter===null)
+        turn[firstNullIndex]=event.target.innerText.toLowerCase()
+        }
+        return turn
+    })
+return board
+}
+
+// For each turn in board loop, On click of button, find first null value in guessNum-1 turn and update it with the innerText of the eventtarget
 
 
 // [ ] 2. Create a function that **updates the squareEls innerText with values from board array** (on the line of the current Turn) 
