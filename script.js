@@ -117,7 +117,7 @@ function init() {
     ]
     generateKeysStatus()
     console.log(keysStatus)
-    guessNum=2 // SET THIS BACK TO 1 LATER!!!!!!!!!
+    guessNum=1
     correctlyGuessed=false
     gameOver=false
     function generateTargetWord() {
@@ -136,16 +136,6 @@ function init() {
 console.log(board)
 
 console.log(keysStatus)
-
-
-board = [   //---->REMOVE ALL OF THIS LATER
-    ['b','l','a','c','k'],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-]
 
 //updateKeysStatus() //---->REMOVE ALL OF THIS LATER
 
@@ -246,9 +236,9 @@ function turnsPlayed() {
 
 function handleClick(event) {
     console.log(event.target.innerText + " was clicked!")
+    updateBoard(event) 
     updateBoardArr(event)
     console.log(board)
-    updateBoard(event) 
 }
 
 // [P1] 1. **Update the values in the board array** with the same letter contained in the click target element’s (key’s) innerText
@@ -268,6 +258,7 @@ return board
 
 function updateBoard(event) {
     let index = guessNum - 1
+    console.log(index + ", index")
     let includedIds = [];
     if (guessNum === 1) {
         includedIds = [0, 1, 2, 3, 4];
