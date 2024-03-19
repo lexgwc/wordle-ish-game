@@ -133,7 +133,7 @@ function init() {
     ]
     generateKeysStatus()
     console.log(keysStatus)
-    guessNum=1
+    guessNum=2
     correctlyGuessed=false
     gameOver=false
     function generateTargetWord() {
@@ -156,7 +156,7 @@ console.log(keysStatus)
 
 board = [
     ['b','l','a','c','k'],
-    [null, null, null, null, null],
+    ['w', 'h','i','t', 'e'],
     [null, null, null, null, null],
     [null, null, null, null, null],
     [null, null, null, null, null],
@@ -231,7 +231,7 @@ function updateKeysColor() {}
 
 function updateKeysStatus() {
     board.forEach(function(turn, turnIndex) {
-        if (turnIndex !== guessNum - 1) {
+        if (turnIndex > guessNum - 1) {
             return;
         } 
         turn.forEach(function(guessLetter, letterIndex) {
