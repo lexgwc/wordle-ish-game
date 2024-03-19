@@ -56,16 +56,8 @@ console.log(keysStatus)
 let guessNum
 //     4. Use an array named wordOptions to store 5-letter words
 const wordOptions = [
-    "apple", "baker", "candy", "dance", "eagle", "frost", "grape", "happy", "jelly", "kitty",
-    "lemon", "magic", "noble", "ocean", "piano", "queen", "roses", "sunny", "tiger", "umbra",
-    "vocal", "water", "zebra", "angry", "black", "clean", "dream", "early", "fancy", "great",
-    "happy", "jolly", "kind", "lucky", "merry", "nasty", "olive", "proud", "quick", "rusty",
-    "shiny", "tidy", "ugly", "vivid", "white", "young", "zebra", "abide", "bring", "catch",
-    "drink", "enjoy", "fight", "gather", "hover", "joust", "knit", "laugh", "mourn",
-    "offer", "print", "query", "relax", "surge", "travel", "upend", "value", "whirl", "xerox",
-    "yank", "zipper", "allow", "bloom", "chase", "dodge", "expand", "flirt", "gather", "heal",
-    "ignite", "juggle", "knock", "listen", "mimic", "nuzzle", "organ", "ponder", "quell",
-    "relax", "savor", "thrust", "uphold", "visit", "whisk", "x-ray", "yearn", "zoom","longword","hi"
+    "amble", "baker", "candy", "dance", "frost", "grape",
+    "lemon", "magic", "noble", "ocean", "piano", "tiger", "vocal", "water", "zebra", "angry", "black", "clean", "dream", "early", "fancy", "great", "lucky", "nasty", "olive", "proud", "quick", "rusty", "shiny", "tidy", "ugly", "white", "young", "zebra", "abide", "bring", "drink", "enjoy", "fight", "gather", "hover", "joust", "knit", "laugh", "mourn", "print", "query", "relax", "surge", "travel", "upend", "value", "whirl", "chase", "expand", "flirt", "gather", "organ", "relax", "savor", "whisk", "yearn","longword","hi","cloak", "glory", "knife", "mirth", "roast", "vixen", "blush", "smart", "crane", "blink", "unzip", "quark", "nudge", "chart", "yacht", "plumb", "lemon", "flint", "grind"
 ]
 
 function filterWords(wordOptions) {
