@@ -32,26 +32,8 @@ function generateKeysStatus() {
 
 console.log(keysStatus)
 
-//         1. e.g.:
-            
-//             ```jsx
-//             keysStatus = [
-//             		{Letter: A
-//             	Status: Not Guessed
-//             	}
-//             		{Letter: B
-//             	Status: Guessed - Incorrect Placement
-//             	}
-//             		{Letter: C
-//             	Status: Guessed - Correct Placement
-//             	}
-//             		{Letter: D
-//             	Status: Guessed - Incorrect 
-//             	}
-//             ]
-//             ```
-            
-//     3. Use a variable named `turn` to track which turn it is (and therefore which line the guess letters will go in)
+
+//     3. Use a variable named `guessNum` to track which turn it is (and therefore which line the guess letters will go in)
 
 let guessNum
 //     4. Use an array named wordOptions to store 5-letter words
@@ -81,13 +63,13 @@ let gameOver
 //     1. Create **variable** messageEl to represent the element that shows the game status
 let messageEl = document.getElementById('gameStatus')
 console.log(messageEl.innerText)
-//     2. Create **variable** keyEls to represent the lettered keys on keyboard
-let keyEls=document.getElementsByClassName('keyBtn')
+//     2. Create **variable** letterEls to represent the lettered keys on keyboard
+let letterEls=document.getElementsByClassName('letter')
 
 //GET RID OF THIS LATER
 let alphabetArr=[]
-for (let i = 0; i < keyEls.length; i++) {
-    alphabetArr.push(keyEls[i].innerText)
+for (let i = 0; i < letterEls.length; i++) {
+    alphabetArr.push(letterEls[i].innerText)
 }
 console.log(alphabetArr);
 // GET RID UP TO HERE
@@ -133,7 +115,7 @@ function init() {
     ]
     generateKeysStatus()
     console.log(keysStatus)
-    guessNum=2
+    guessNum=2 // SET THIS BACK TO 1 LATER!!!!!!!!!
     correctlyGuessed=false
     gameOver=false
     function generateTargetWord() {
@@ -147,14 +129,14 @@ function init() {
     if (targetWord.length!==5) {
         generateTargetWord()
     }
-    // render() --------->UNHIDE LATER~!!!!!
+    //render() // --------->UNHIDE LATER~!!!!!
 }
-
 console.log(board)
 
 console.log(keysStatus)
 
-board = [
+
+board = [   //---->REMOVE ALL OF THIS LATER
     ['b','l','a','c','k'],
     ['w', 'h','i','t', 'e'],
     [null, null, null, null, null],
@@ -163,74 +145,77 @@ board = [
     [null, null, null, null, null],
 ]
 
-updateKeysStatus()
+updateKeysStatus() //---->REMOVE ALL OF THIS LATER
 
 keysStatus.forEach(obj => console.log(obj))
 
-//     2. Create render() function and call at end of init(). Set aside for now
+// [X]    2. Create render() function and call at end of init(). Set aside for now
 
-// 4. Create Render function 
+// [X] 4. Create Render function 
 
-/* 
 function render() {
     updateKeysStatus()
     updateKeysColor()
     updateSquaresColor()
     updateMessage()
 }
-*/
-//     1. Inside render function:
         
-//         ```jsx
-//         function render() {
-//         updateBoard()
-//         updateKeysColor()
-//         updateSquaresColor()
-//         updateMessage()
-//         }
-//         ```
-        
-//     2. Create `updateBoard` function. **(this should change the color of squareEls based on keysStatus)**
 
-function updateKeysColor() {}
-// foreach loop over board array
-// for each subarray(choice), if subarray index (board[i]) is NOT equal to turn-1, then return out of function
-// else if subarray index (board[i]) IS equal to turn-1, then:
-//nested forEach on subarray (choice). For each letter in choice:
-// if targetWord.includes(choiceLetter) {
-// } else this.status="Incorrect"
-// }
+// [P1] 2. Create `updateKeysColor` function. **(this should change the color of squareEls based on keysStatus)**
+
+//CAN WE ACHIEVE BOTH KEYS AND SQUARES UPDATE IN ONE FUNCTION?
+function updateKeysColor() {} //----- TO CODE
+
+// - if keysStatus[name]=letterEls.innerText
+// - if this.keyStatus[status]= Not Guessed, letterEls.style.color = white
+// - else if this.keyStatus[status]= Guessed - Incorrect Placement, letterEls.style.color = Yellow
+// - else if this.keyStatus[status]= Guessed - Correct Placement, letterEls.style.color = Green
+// - else if this.keyStatus[status]= Guessed - Incorrect, letterEls.style.color = Gray
 
 
-//         1. Create UpdateBoard function *—— do I need this?*
-//         2. **Update colors of keys on keyboard -** Create an updateKeysColor function that changes color of keyEls based on keysStatus 
-//             - In `updateBoard` function, loop over `board` and for each element:
-//             - if keysStatus[name]=keyEls.innerText
-//                 - if this.keyStatus[status]= Not Guessed, keyEls.style.color = white
-//                 - else if this.keyStatus[status]= Guessed - Incorrect Placement, keyEls.style.color = Yellow
-//                 - else if this.keyStatus[status]= Guessed - Correct Placement, keyEls.style.color = Green
-//                 - else if this.keyStatus[status]= Guessed - Incorrect, keyEls.style.color = Gray
-//         3. **Update colors of squares on board -** Create an updateSquaresColor function that changes color of squareEls based on keysStatus 
-//             - if keysStatus[name]=squareEls.innerText
-//                 - if this.keyStatus[status]= Not Guessed, keyEls.style.color = white
-//                 - else if this.keyStatus[status]= Guessed - Incorrect Placement, keyEls.style.color = Yellow
-//                 - else if this.keyStatus[status]= Guessed - Correct Placement, keyEls.style.color = Green
-//                 - else if this.keyStatus[status]= Guessed - Incorrect, keyEls.style.color = Gray
-//     3. Create `updateMessage` function
-//         1. If isGameOver=true
-//             1. If correctlyGuessed= true (ensure this is scoped to be accessible), update messageEl to “You won! Game Over!”, else if gameOver = true update messageEl to ““Unfortunately you did not guess the correct word. Play again?”
-//             2. else if gameOver = false update messageEl to “Guess again”
-//     4. Call both the `updateBoard` and the `updateMessage`  and updateKeysColor and updateSquaresColor functions inside of `render` function. 
-// 5. Create turnsPlayed function to increase turn by 1 every time submit button is clicked.
-// 8. Handle a player clicking the keyEls with a `handleClick` function
+// [ ] 3. **Update colors of squares on board -** Create an updateSquaresColor function that changes color of squareEls based on keysStatus 
+function updateSquaresColor() {} //----- TO CODE
+// - if keysStatus[name]=squareEls.innerText
+// - if this.keyStatus[status]= Not Guessed, letterEls.style.color = white
+// - else if this.keyStatus[status]= Guessed - Incorrect Placement, letterEls.style.color = Yellow
+// - else if this.keyStatus[status]= Guessed - Correct Placement, letterEls.style.color = Green
+// - else if this.keyStatus[status]= Guessed - Incorrect, letterEls.style.color = Gray
+
+// [ ] 4. Create `updateMessage` function
+function updateMessage() {} //----- TO CODE
+// If isGameOver=true
+// If correctlyGuessed= true (ensure this is scoped to be accessible), update messageEl to “You won! Game Over!”, else if gameOver = true update messageEl to ““Unfortunately you did not guess the correct word. Play again?”
+// else if gameOver = false update messageEl to “Guess again”
+// Call both the `updateBoard` and the `updateMessage`  and updateKeysColor and updateSquaresColor functions inside of `render` function. 
+// Create turnsPlayed function to increase turn by 1 every time submit button is clicked.
+// Handle a player clicking the letterEls with a `handleClick` function
+
+function turnsPlayed() {
+    guessNum+= 1
+    return guessNum
+}
+
+
+// Create handleClick function that handles player clicking on keyboard
+function handleClick() {
+    console.log(event.target + " was clicked!")
+    updateBoard() 
+    updateBoardArr()
+}
 //     1. **Update the values in the board array** with the same letter contained in the click target element’s (key’s) innerText
-//         1. **THIS NEEDS WORK**
+
+function updateBoardArr() {}
+
+
 //     2. Create a function that **updates the squareEls innerText with values from board array** (on the line of the current Turn) 
-//         1. **THIS NEEDS WORK**
+
+function updateSqText() {}
+
 //     3. Create a function that **updates the keysStatus** based on whether clicked key’s (target element’s) innerText is: Contained in targetWord and correctly placed, Contained in targetWord and incorrectly placed, Not contained in targetWord
 
 function updateKeysStatus() {
     board.forEach(function(turn, turnIndex) {
+        console.log(turn)
         if (turnIndex > guessNum - 1) {
             return;
         } 
@@ -241,7 +226,7 @@ function updateKeysStatus() {
             const correctIndices = []
             targetWord.split('').forEach((letter, index) => {
                 console.log(letter)
-                if (letter === guessLetter) { //THINK THERE IS A PROBLEM HERE, guessletter is an object but letter is a string
+                if (letter === guessLetter) { 
                     correctIndices.push(index);
                 }
             });
@@ -256,50 +241,27 @@ function updateKeysStatus() {
     });
 }
 
+  // 6b) Attach an event listener to the keyboard On the `'click'` event, it should call the handleClick` function.
 
-/* OLD CODE FOR UPDATEKEYSSTATUS
-function updateKeysStatus() {
-    board.forEach(function(turn,turnIndex) {
-        if(turnIndex !== guessNum-1 ) {
-            return
-        } 
-        turn.forEach(function(guessLetter, letterIndex) {
-            console.log('Guess letter:', guessLetter)
-            const letterObj = keysStatus.find(obj => obj.letter === guessLetter)
-            console.log('Letter object:', letterObj);
-            const correctIndices = targetWord.indexOf(guessLetter);
-            if (correctIndex === idx) {
-                letterObj.status = "Correctly Placed";
-            } else if (correctIndex !== -1) {
-                letterObj.status = "Incorrectly Placed";
-            } else {
-                letterObj.status = "Incorrect";
-            }
-        })
-    }
+    letterEls.forEach((element) => {
+    element.addEventListener('click', handleClick)
+  })
+
+
+// [ ] 9. Handle a player clicking the submitBtn with handleSubmit function:
+        // 1. Call render function
+        // 2. Call turnsPlayed() function
+
+function handleSubmit() {
+    //add some "onclick" event listener stuff here
+    render()
+    turnsPlayed()
+    isGameOver()
 }
-        
-        (function(guessLetter,index) {
-            console.log('Guess letter:', guessLetter);
-            const letterObj = keysStatus.find(obj => obj.letter === guessLetter)
-            console.log('Letter object:', letterObj);
-            if (targetWord.includes(guessLetter)) {
-                const correctIndex=targetWord.indexOf(guessLetter)
-                if(correctIndex===turn.indexOf(guessLetter)) {
-                        letterObj.status="Correctly Placed"
-                    } else {
-                        letterObj.status="Incorrectly Placed"
-                    }
-                } else {
-                    letterObj.status="Incorrect"
-                }
-            })
 
-*/
-
-
-
-// 9. Handle a player clicking the submitBtn with handleSubmit function:
-//     1. Call render function
-//     2. Call turnsplayed() function
-//     3. Create and call isGameOver function
+// [ ] Create isGameOver function
+        //1. create checkForCorrectGuess function:
+        //  if One of the arrays in board joined as a string = targetWord, set correctlyGuessed = true. Else false
+        // Set gameOver=true IF either (OR)
+         // correctlyGuessed=true
+         // turn = 6
