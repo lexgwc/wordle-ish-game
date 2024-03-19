@@ -120,6 +120,7 @@ function init() {
     guessNum=1
     correctlyGuessed=false
     gameOver=false
+    console.log("game over: " + gameOver)
     function generateTargetWord() {
         let index = Math.floor(Math.random()*filteredWordOptions.length)
         targetWord=filteredWordOptions[index]
@@ -149,7 +150,6 @@ function render() {
     updateKeysStatus()
     updateKeysColor()
     updateSquaresColor()
-    updateMessage()
 }
         
 
@@ -212,7 +212,11 @@ function updateSquaresColor() {
 
 
 // [TO DO] 4. Create `updateMessage` function
-function updateMessage() {} //----- TO CODE
+function updateMessage() {
+    if(gameOver===true) {
+        messageEl.innerText="Shagadelic!"
+    }
+} 
 // If isGameOver=true
 // If correctlyGuessed= true (ensure this is scoped to be accessible), update messageEl to “You won! Game Over!”, else if gameOver = true update messageEl to ““Unfortunately you did not guess the correct word. Play again?”
 // else if gameOver = false update messageEl to “Guess again”
@@ -237,6 +241,7 @@ function handleClick(event) {
     updateBoard(event) 
     updateBoardArr(event)
     console.log(board)
+    console.log("Gameover: " + gameOver)
 }
 
 // [X] Update the values in the board array** with the same letter contained in the click target element’s (key’s) innerText
@@ -322,14 +327,84 @@ function handleSubmit() {
     console.log("Submit button clicked")
     render()
     turnsPlayed()
-    //isGameOver()
+    isCorrectlyGuessed()
+    isGameOver()
+    updateMessage()
 }
 
+function isCorrectlyGuessed() {
+    let numCorrectLetters = keysStatus.filter(obj => obj['status'] === 'Correctly Placed').length
+    if (numCorrectLetters === 5) {
+        correctlyGuessed = true
+    }
+    return correctlyGuessed
+}
+// [X] Create isGameOver function
 
-// [ ] Create isGameOver function
-        //1. create checkForCorrectGuess function:
-        //  if One of the arrays in board joined as a string = targetWord, set correctlyGuessed = true. Else false
-        // Set gameOver=true IF either (OR)
-         // correctlyGuessed=true
-         // turn = 6
-    
+function isGameOver() {
+    let maxTurns=6
+    console.log((correctlyGuessed === true || guessNum > maxTurns))
+    if (correctlyGuessed === true || guessNum > maxTurns) {
+        gameOver = true
+        confetti()
+    }
+    console.log({
+        gameOver,
+        guessNum
+    });
+}
+
+/* function confetti() {
+    if(gameOver===true) {
+        const confettiCount = 1000;
+        const confettiWrapper = document.getElementById('confetti-wrapper');
+      
+        for (let i = 0; i < confettiCount; i++) {
+          const confetti = document.createElement('div');
+          confetti.classList.add('confetti');
+          confetti.style.backgroundColor = ['#ff0', '#f00', '#0f0', '#00f'][Math.floor(Math.random() * 4)];
+          confetti.style.left = `${Math.random() * 100}%`;
+          confetti.style.top = `-${Math.random() * 20}%`;
+          confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+      
+          animateConfetti(confetti);
+          confettiWrapper.appendChild(confetti);
+        }
+      }
+      
+      function animateConfetti(confetti) {
+        const confettiWrapper = document.getElementById('confetti-wrapper');
+        const maxX = confettiWrapper.offsetWidth;
+        const maxY = confettiWrapper.offsetHeight;
+      
+        let x = Math.random() * maxX; // Start at a random x position
+        let y = 0; // Start at the top of the wrapper
+        const initialX = Math.random() * 20 - 10; // Horizontal drift
+        let initialY = Math.random() * 5 + 2; // Initial vertical speed
+        const gravity = 0.005; // Gravity effect
+      
+        const color = ['#ff0', '#f00', '#0f0', '#00f'][Math.floor(Math.random() * 4)];
+        confetti.style.backgroundColor = color;
+      
+        const updateConfetti = () => {
+          x += initialX;
+          y += initialY;
+          initialY += gravity; // Simulate gravity
+      
+          // Apply the transformation
+          confetti.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      
+          // Check if the confetti piece is still within the visible area
+          if (y < maxY) {
+            requestAnimationFrame(updateConfetti);
+          } else {
+            confetti.remove(); // Cleanup confetti that's off the screen
+          }
+        };
+      
+        // Kick off the animation
+        requestAnimationFrame(updateConfetti);
+      }    
+    }
+
+    */
