@@ -64,7 +64,9 @@ let gameOver
 let messageEl = document.getElementById('gameStatus')
 console.log(messageEl.innerText)
 //     2. Create **variable** letterEls to represent the lettered keys on keyboard
-let letterEls=document.getElementsByClassName('letter')
+let letterEls=document.getElementsByClassName('keyBtn letter')
+
+console.log(letterEls)
 
 //GET RID OF THIS LATER
 let alphabetArr=[]
@@ -161,25 +163,63 @@ function render() {
 }
         
 
-// [P1] 2. Create `updateKeysColor` function. **(this should change the color of squareEls based on keysStatus)**
+// [X] 2. Create `updateKeysColor` function. **(this should change the color of squareEls based on keysStatus)**
 
 //CAN WE ACHIEVE BOTH KEYS AND SQUARES UPDATE IN ONE FUNCTION?
-function updateKeysColor() {} //----- TO CODE
+function updateKeysColor() {
+    for (let i = 0; i < letterEls.length; i++) {
+        let currentLetter=letterEls[i].innerText
+        console.log(currentLetter)
+        let keyStatusObj = keysStatus.find(obj => obj.letter.toUpperCase() === currentLetter.toUpperCase());
+        if (keyStatusObj) {
+            // If a matching key status object is found
+            switch(keyStatusObj.status) {
+                case "Correctly Placed":
+                    letterEls[i].style.backgroundColor = "green";
+                    break;
+                case "Incorrectly Placed":
+                    letterEls[i].style.backgroundColor = "yellow";
+                    break;
+                case "Incorrect":
+                    letterEls[i].style.backgroundColor = "red";
+                    break;
+                default:
+                    letterEls[i].style.color = "black"; // Default color or any other color for 'Not Guessed'
+            }
+        }
+    }
+}
 
-// - if keysStatus[name]=letterEls.innerText
-// - if this.keyStatus[status]= Not Guessed, letterEls.style.color = white
-// - else if this.keyStatus[status]= Guessed - Incorrect Placement, letterEls.style.color = Yellow
-// - else if this.keyStatus[status]= Guessed - Correct Placement, letterEls.style.color = Green
-// - else if this.keyStatus[status]= Guessed - Incorrect, letterEls.style.color = Gray
-
+updateKeysColor() //-----> REMOVE LATER
 
 // [ ] 3. **Update colors of squares on board -** Create an updateSquaresColor function that changes color of squareEls based on keysStatus 
-function updateSquaresColor() {} //----- TO CODE
-// - if keysStatus[name]=squareEls.innerText
-// - if this.keyStatus[status]= Not Guessed, letterEls.style.color = white
-// - else if this.keyStatus[status]= Guessed - Incorrect Placement, letterEls.style.color = Yellow
-// - else if this.keyStatus[status]= Guessed - Correct Placement, letterEls.style.color = Green
-// - else if this.keyStatus[status]= Guessed - Incorrect, letterEls.style.color = Gray
+
+function updateSquaresColor() {
+    for (let i = 0; i < squareEls.length; i++) {
+        let currentSquare=squareEls[i].innerText
+        console.log(currentSquare)
+        let keyStatusObj = keysStatus.find(obj => obj.letter.toUpperCase() === currentSquare.toUpperCase());
+        if (keyStatusObj) {
+            // If a matching key status object is found
+            switch(keyStatusObj.status) {
+                case "Correctly Placed":
+                    squareEls[i].style.backgroundColor = "green";
+                    break;
+                case "Incorrectly Placed":
+                    squareEls[i].style.backgroundColor = "yellow";
+                    break;
+                case "Incorrect":
+                    squareEls[i].style.backgroundColor = "red";
+                    break;
+                default:
+                    squareEls[i].style.color = "black"; // Default color or any other color for 'Not Guessed'
+            }
+        }
+    }
+}
+
+updateSquaresColor()
+
 
 // [ ] 4. Create `updateMessage` function
 function updateMessage() {} //----- TO CODE
@@ -195,23 +235,30 @@ function turnsPlayed() {
     return guessNum
 }
 
+  // [x] Attach an event listener to the keyboard. On the `'click'` event, it should call the handleClick` function.
+
+  for (let i = 0; i < letterEls.length; i++) {
+    letterEls[i].addEventListener('click', handleClick);
+}
+
 
 // Create handleClick function that handles player clicking on keyboard
-function handleClick() {
-    console.log(event.target + " was clicked!")
-    updateBoard() 
-    updateBoardArr()
+
+function handleClick(event) {
+    console.log(event.target.innerText + " was clicked!")
+    // updateBoardArr()
+    // updateBoard() 
 }
-//     1. **Update the values in the board array** with the same letter contained in the click target element’s (key’s) innerText
+// [ ] 1. **Update the values in the board array** with the same letter contained in the click target element’s (key’s) innerText
 
 function updateBoardArr() {}
 
 
-//     2. Create a function that **updates the squareEls innerText with values from board array** (on the line of the current Turn) 
+// [ ] 2. Create a function that **updates the squareEls innerText with values from board array** (on the line of the current Turn) 
 
 function updateSqText() {}
 
-//     3. Create a function that **updates the keysStatus** based on whether clicked key’s (target element’s) innerText is: Contained in targetWord and correctly placed, Contained in targetWord and incorrectly placed, Not contained in targetWord
+// [ ] 3. Create a function that **updates the keysStatus** based on whether clicked key’s (target element’s) innerText is: Contained in targetWord and correctly placed, Contained in targetWord and incorrectly placed, Not contained in targetWord
 
 function updateKeysStatus() {
     board.forEach(function(turn, turnIndex) {
@@ -241,23 +288,19 @@ function updateKeysStatus() {
     });
 }
 
-  // 6b) Attach an event listener to the keyboard On the `'click'` event, it should call the handleClick` function.
 
-    letterEls.forEach((element) => {
-    element.addEventListener('click', handleClick)
-  })
-
-
-// [ ] 9. Handle a player clicking the submitBtn with handleSubmit function:
+// [X] 9. Handle a player clicking the submitBtn with handleSubmit function:
         // 1. Call render function
         // 2. Call turnsPlayed() function
 
+submitBtn.addEventListener('click',handleSubmit)
+
 function handleSubmit() {
-    //add some "onclick" event listener stuff here
     render()
     turnsPlayed()
     isGameOver()
 }
+
 
 // [ ] Create isGameOver function
         //1. create checkForCorrectGuess function:
