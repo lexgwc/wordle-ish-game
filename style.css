@@ -1,9 +1,14 @@
+body {
+  font-family: 'Arial', sans-serif;
+}
+
 .container {  
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1.4fr 0.9fr 0.9fr 0.9fr 0.9fr 0.9fr 0.9fr 0.4fr 2.5fr 0.3fr;
     gap: 0px 0px;
     height: 100vh;
+    background-color: white;
     grid-auto-flow: row;
     grid-template-areas:
       "leftBorder Title Title Title Title Title rightBorder"
@@ -20,8 +25,15 @@
   
 
   .squareEl {
-    background-color: aquamarine;
-    border: 3px solid black;
+    background-color: #00BEFF;
+    border: 3px solid pink;
+    border-color: white;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size: 30px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }  
 
 #submitBtn, #deleteBtn{
@@ -31,18 +43,25 @@
     height: 30px;
     width: 60px;
     margin: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   }
 
   .keyBtn:hover {
-    background-color:cadetblue;
+    background-color:#00F8FF;
     cursor: pointer;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
   }
 
   .keyboard { 
     grid-area: keyboard; 
-    background-color: aquamarine;
-    border: 3px solid black;
+    background-color: #00BEFF;
+    border: 3px solid white;
+    border-radius: 10%;
     display: flex;
+    justify-content:center;
     gap: 5px;
     flex-wrap: wrap;
   }
@@ -58,6 +77,7 @@
     padding: 0px;
     margin: 10px;
   }
+
 
   #gameStatus {
     font-size: 20px;
@@ -198,4 +218,5 @@
   #sq29 { 
     grid-area: sq29; 
   }
+  
   

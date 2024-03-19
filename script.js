@@ -39,7 +39,7 @@ let guessNum
 //     4. Use an array named wordOptions to store 5-letter words
 const wordOptions = [
     "amble", "baker", "candy", "dance", "frost", "grape",
-    "lemon", "magic", "noble", "ocean", "piano", "tiger", "vocal", "water", "zebra", "angry", "black", "clean", "dream", "early", "fancy", "great", "lucky", "nasty", "olive", "proud", "quick", "rusty", "shiny", "tidy", "ugly", "white", "young", "zebra", "abide", "bring", "drink", "enjoy", "fight", "gather", "hover", "joust", "knit", "laugh", "mourn", "print", "query", "relax", "surge", "travel", "upend", "value", "whirl", "chase", "expand", "flirt", "gather", "organ", "relax", "savor", "whisk", "yearn","longword","hi","cloak", "glory", "knife", "mirth", "roast", "vixen", "blush", "smart", "crane", "blink", "unzip", "quark", "nudge", "chart", "yacht", "plumb", "lemon", "flint", "grind"
+    "lemon", "magic", "noble", "ocean", "piano", "tiger", "vocal", "water", "zebra", "angry", "black", "clean", "dream", "early", "fancy", "great", "lucky", "nasty", "olive", "proud", "quick", "rusty", "shiny", "tidy", "ugly", "white", "young", "zebra", "abide", "bring", "drink", "enjoy", "fight", "gather", "hover", "joust", "knit", "laugh", "mourn", "print", "query", "relax", "surge", "travel", "upend", "value", "whirl", "chase", "expand", "flirt", "gather", "organ", "relax", "savor", "whisk", "yearn","longword","hi","cloak", "glory", "knife", "mirth", "roast", "vixen", "blush", "smart", "crane", "blink", "unzip", "quark", "nudge", "chart", "yacht", "plumb", "lemon", "flint", "grind","pants","crowd","crime","clime","steam","clean"
 ]
 
 function filterWords(wordOptions) {
@@ -155,14 +155,12 @@ function render() {
 
 // [X] 2. Create `updateKeysColor` function. **(this should change the color of squareEls based on keysStatus)**
 
-//CAN WE ACHIEVE BOTH KEYS AND SQUARES UPDATE IN ONE FUNCTION?
 function updateKeysColor() {
     for (let i = 0; i < letterEls.length; i++) {
         let currentLetter=letterEls[i].innerText
         console.log(currentLetter)
         let keyStatusObj = keysStatus.find(obj => obj.letter.toUpperCase() === currentLetter.toUpperCase());
         if (keyStatusObj) {
-            // If a matching key status object is found
             switch(keyStatusObj.status) {
                 case "Correctly Placed":
                     letterEls[i].style.backgroundColor = "green";
@@ -174,15 +172,13 @@ function updateKeysColor() {
                     letterEls[i].style.backgroundColor = "red";
                     break;
                 default:
-                    letterEls[i].style.color = "black"; // Default color or any other color for 'Not Guessed'
+                    letterEls[i].style.color = "black"
             }
         }
     }
 }
 
-updateKeysColor() //-----> REMOVE LATER
-
-// [ ] 3. **Update colors of squares on board -** Create an updateSquaresColor function that changes color of squareEls based on keysStatus 
+// [X] 3. **Update colors of squares on board -** Create an updateSquaresColor function that changes color of squareEls based on keysStatus 
 
 function updateSquaresColor() {
     for (let i = 0; i < squareEls.length; i++) {
@@ -208,17 +204,14 @@ function updateSquaresColor() {
     }
 }
 
-updateSquaresColor() // -----> REMOVE LATER
 
-
-// [ ] 4. Create `updateMessage` function
+// [TO DO] 4. Create `updateMessage` function
 function updateMessage() {} //----- TO CODE
 // If isGameOver=true
 // If correctlyGuessed= true (ensure this is scoped to be accessible), update messageEl to “You won! Game Over!”, else if gameOver = true update messageEl to ““Unfortunately you did not guess the correct word. Play again?”
 // else if gameOver = false update messageEl to “Guess again”
 // Call both the `updateBoard` and the `updateMessage`  and updateKeysColor and updateSquaresColor functions inside of `render` function. 
-// Create turnsPlayed function to increase turn by 1 every time submit button is clicked.
-// Handle a player clicking the letterEls with a `handleClick` function
+// [X] Create turnsPlayed function to increase turn by 1 every time submit button is clicked.
 
 function turnsPlayed() {
     guessNum+= 1
@@ -231,8 +224,7 @@ function turnsPlayed() {
     letterEls[i].addEventListener('click', handleClick);
 }
 
-
-// [ ] Create handleClick function that handles player clicking on keyboard
+// [X] Create handleClick function that handles player clicking on keyboard
 
 function handleClick(event) {
     console.log(event.target.innerText + " was clicked!")
@@ -241,8 +233,7 @@ function handleClick(event) {
     console.log(board)
 }
 
-// [P1] 1. **Update the values in the board array** with the same letter contained in the click target element’s (key’s) innerText
-
+// [X] Update the values in the board array** with the same letter contained in the click target element’s (key’s) innerText
 
 function updateBoardArr(event) {
     board.forEach(function(turn,turnIndex) {
@@ -254,8 +245,7 @@ function updateBoardArr(event) {
     })
 return board
 }
-
-
+// [X] Create a function that **updates the squareEls innerText with values from board array** (on the line of the current Turn) 
 function updateBoard(event) {
     let index = guessNum - 1
     console.log(index + ", index")
@@ -284,12 +274,8 @@ function updateBoard(event) {
 }
 
 
-// [ ] 2. Create a function that **updates the squareEls innerText with values from board array** (on the line of the current Turn) 
 
-
-function updateSqText() {}
-
-// [ ] 3. Create a function that **updates the keysStatus** based on whether clicked key’s (target element’s) innerText is: Contained in targetWord and correctly placed, Contained in targetWord and incorrectly placed, Not contained in targetWord
+// [X] 3. Create a function that **updates the keysStatus** based on whether clicked key’s (target element’s) innerText is: Contained in targetWord and correctly placed, Contained in targetWord and incorrectly placed, Not contained in targetWord
 
 function updateKeysStatus() {
     board.forEach(function(turn, turnIndex) {
