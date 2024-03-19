@@ -140,7 +140,7 @@ console.log(keysStatus)
 
 board = [   //---->REMOVE ALL OF THIS LATER
     ['b','l','a','c','k'],
-    ['w', 'h','i',null, null],
+    [null, null, null, null, null],
     [null, null, null, null, null],
     [null, null, null, null, null],
     [null, null, null, null, null],
@@ -248,10 +248,11 @@ function handleClick(event) {
     console.log(event.target.innerText + " was clicked!")
     updateBoardArr(event)
     console.log(board)
-    // updateBoard() 
+    updateBoard(event) 
 }
 
 // [P1] 1. **Update the values in the board array** with the same letter contained in the click target element’s (key’s) innerText
+
 
 function updateBoardArr(event) {
     board.forEach(function(turn,turnIndex) {
@@ -264,10 +265,36 @@ function updateBoardArr(event) {
 return board
 }
 
-// For each turn in board loop, On click of button, find first null value in guessNum-1 turn and update it with the innerText of the eventtarget
+
+function updateBoard(event) {
+    let index = guessNum - 1
+    let includedIds = [];
+    if (guessNum === 1) {
+        includedIds = [0, 1, 2, 3, 4];
+    } else if (guessNum === 2) {
+        includedIds = [5, 6, 7, 8, 9];
+    } else if (guessNum === 3) {
+        includedIds = [10, 11, 12, 13, 14];
+    } else if (guessNum === 4) {
+        includedIds = [15, 16, 17, 18, 19];
+    } else if (guessNum === 5) {
+        includedIds = [20, 21, 22, 23, 24];
+    } else if (guessNum === 6) {
+        includedIds = [25, 26, 27, 28, 29];
+    }
+    console.log(includedIds)
+    let firstNullIndex = board[index].findIndex(guessLetter => guessLetter === null)
+    console.log(includedIds[firstNullIndex])
+    if (firstNullIndex !== -1) {
+        let squareId = "sq" + includedIds[firstNullIndex];
+        console.log(squareId);
+        document.getElementById(squareId).innerText = event.target.innerText;
+    }
+}
 
 
 // [ ] 2. Create a function that **updates the squareEls innerText with values from board array** (on the line of the current Turn) 
+
 
 function updateSqText() {}
 
@@ -309,9 +336,10 @@ function updateKeysStatus() {
 submitBtn.addEventListener('click',handleSubmit)
 
 function handleSubmit() {
+    console.log("Submit button clicked")
     render()
     turnsPlayed()
-    isGameOver()
+    //isGameOver()
 }
 
 
@@ -321,3 +349,4 @@ function handleSubmit() {
         // Set gameOver=true IF either (OR)
          // correctlyGuessed=true
          // turn = 6
+    
