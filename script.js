@@ -163,13 +163,16 @@ function updateKeysColor() {
         if (keyStatusObj) {
             switch(keyStatusObj.status) {
                 case "Correctly Placed":
-                    letterEls[i].style.backgroundColor = "green";
+                    letterEls[i].style.backgroundColor = "rgb(135,182,94)";
+                    letterEls[i].style.color = "white";
                     break;
                 case "Incorrectly Placed":
-                    letterEls[i].style.backgroundColor = "yellow";
+                    letterEls[i].style.backgroundColor = "rgb(235,196,84)";
+                    letterEls[i].style.color = "white";
                     break;
                 case "Incorrect":
-                    letterEls[i].style.backgroundColor = "red";
+                    letterEls[i].style.backgroundColor = "rgb(166,174,194)";
+                    letterEls[i].style.color = "white";
                     break;
                 default:
                     letterEls[i].style.color = "black"
@@ -189,13 +192,16 @@ function updateSquaresColor() {
             // If a matching key status object is found
             switch(keyStatusObj.status) {
                 case "Correctly Placed":
-                    squareEls[i].style.backgroundColor = "green";
+                    squareEls[i].style.backgroundColor = "rgb(135,182,94)";
+                    squareEls[i].style.color = "white";
                     break;
                 case "Incorrectly Placed":
-                    squareEls[i].style.backgroundColor = "yellow";
+                    squareEls[i].style.backgroundColor = "rgb(235,196,84)";
+                    squareEls[i].style.color = "white";
                     break;
                 case "Incorrect":
-                    squareEls[i].style.backgroundColor = "red";
+                    squareEls[i].style.backgroundColor = "rgb(166,174,194)";
+                    squareEls[i].style.color = "white";
                     break;
                 default:
                     squareEls[i].style.color = "black"; // Default color or any other color for 'Not Guessed'

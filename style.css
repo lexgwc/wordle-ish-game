@@ -1,5 +1,6 @@
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Space Mono', sans-serif;
+  color: rgba(58, 62, 75)
 }
 
 .container {  
@@ -25,15 +26,17 @@ body {
   
 
   .squareEl {
-    background-color: #00BEFF;
-    border: 3px solid pink;
-    border-color: white;
+    background-color: rgb(251,252,255);
+    border: 2px solid rgb(197,203,219);
+    border-radius: 5%;
     display: flex;
     justify-content: center;
     align-items:center;
-    font-size: 30px;
+    margin: 5px;
+    font-size: 15px;
+    color: rgb(58,62,75);
+    font-weight: bolder;
     transition: background-color 0.3s ease;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }  
 
 #submitBtn, #deleteBtn{
@@ -43,12 +46,22 @@ body {
     height: 30px;
     width: 60px;
     margin: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    color: rgba(58, 62, 75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 1000;
+    box-shadow: none;
+    margin: 4px;
+    outline: none;
+    border-radius: 10%;
+    padding: 20px;
+    border-color: white;
+    background-color: rgb(221,225,236);
   }
 
   .keyBtn:hover {
-    background-color:#00F8FF;
+    background-color: ;
     cursor: pointer;
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
@@ -57,16 +70,13 @@ body {
 
   .keyboard { 
     grid-area: keyboard; 
-    background-color: #00BEFF;
-    border: 3px solid white;
-    border-radius: 10%;
     display: flex;
     justify-content:center;
-    gap: 5px;
     flex-wrap: wrap;
   }
   
   .Title { 
+    margin-top: 40px;
     grid-area: Title; 
     display: flex;
     justify-content: center;
@@ -81,6 +91,7 @@ body {
 
   #gameStatus {
     font-size: 20px;
+    padding: 0px;
   }
   
   .leftBorder { 
