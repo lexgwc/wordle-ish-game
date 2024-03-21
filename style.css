@@ -1,6 +1,8 @@
 body {
   font-family: 'Space Mono', sans-serif;
-  color: rgba(58, 62, 75)
+  color: black;
+  margin: 0;
+  padding: 0;
 }
 
 .container {  
@@ -9,7 +11,7 @@ body {
     grid-template-rows: 1.4fr 0.9fr 0.9fr 0.9fr 0.9fr 0.9fr 0.9fr 0.4fr 2.5fr 0.3fr;
     gap: 0px 0px;
     height: 100vh;
-    background-color: white;
+    background: white;
     grid-auto-flow: row;
     grid-template-areas:
       "leftBorder Title Title Title Title Title rightBorder"
@@ -24,6 +26,7 @@ body {
       "leftBorder bottomBorder bottomBorder bottomBorder bottomBorder bottomBorder rightBorder";
   }
   
+
 
   .squareEl {
     background-color: rgb(251,252,255);
@@ -80,6 +83,7 @@ body {
     grid-area: Title; 
     display: flex;
     justify-content: center;
+    font-family: "Moul", serif;
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;

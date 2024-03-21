@@ -69,6 +69,8 @@ let letterEls=document.getElementsByClassName('keyBtn letter')
 
 const sound = document.getElementById('clickSound')
 
+const blingSound = document.getElementById('blingSound')
+
 //     3. Create **variable** squareEls to represent the squares on the board
 let squareEls = document.getElementsByClassName('squareEl')
 
@@ -184,7 +186,6 @@ function updateKeysColor() {
 function updateSquaresColor() {
     for (let i = 0; i < squareEls.length; i++) {
         let currentSquare=squareEls[i].innerText
-        console.log(currentSquare)
         let keyStatusObj = keysStatus.find(obj => obj.letter.toUpperCase() === currentSquare.toUpperCase());
         if (keyStatusObj) {
             // If a matching key status object is found
@@ -317,7 +318,7 @@ function updateKeysStatus() {
 submitBtn.addEventListener('click',handleSubmit)
 
 function handleSubmit() {
-    console.log("Submit button clicked")
+    blingSound.play()
     render()
     turnsPlayed()
     isCorrectlyGuessed()
