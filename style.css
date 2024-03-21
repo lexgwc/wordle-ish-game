@@ -81,6 +81,10 @@ body {
   .Title { 
     margin-top: 40px;
     grid-area: Title; 
+    text-decoration: underline;
+    text-decoration-color: #DE0D25;
+    text-decoration-thickness: 4px; 
+    text-underline-offset: 5px;
     display: flex;
     justify-content: center;
     font-family: "Moul", serif;
