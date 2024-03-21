@@ -273,7 +273,6 @@ function handleSubmit() {
             if(turnContainsNull) {
                 return
         } else {
-            blingSound.play()
             render()
             turnsPlayed()
             isCorrectlyGuessed()
@@ -345,6 +344,7 @@ function isGameOver() {
 
 function confetti() {
     if(correctlyGuessed===true) {
+        blingSound.play()
         const confettiCount = 1000;
         const confettiWrapper = document.getElementById('confetti-wrapper');
       
