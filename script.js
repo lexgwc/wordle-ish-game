@@ -30,7 +30,9 @@ function generateKeysStatus() {
     return keysStatus
 }
 
-console.log(keysStatus)
+function resetKeysStatus() {
+    keysStatus.forEach(letterObj => letterObj.status="Not Guessed")
+}
 
 
 //     3. Use a variable named `guessNum` to track which turn it is (and therefore which line the guess letters will go in)
@@ -38,8 +40,7 @@ console.log(keysStatus)
 let guessNum
 //     4. Use an array named wordOptions to store 5-letter words
 const wordOptions = [
-    "amble", "baker", "candy", "dance", "frost", "grape",
-    "lemon", "magic", "noble", "ocean", "piano", "tiger", "vocal", "water", "zebra", "angry", "black", "clean", "dream", "early", "fancy", "great", "lucky", "nasty", "olive", "proud", "quick", "rusty", "shiny", "tidy", "ugly", "white", "young", "zebra", "abide", "bring", "drink", "enjoy", "fight", "gather", "hover", "joust", "knit", "laugh", "mourn", "print", "query", "relax", "surge", "travel", "upend", "value", "whirl", "chase", "expand", "flirt", "gather", "organ", "relax", "savor", "whisk", "yearn","longword","hi","cloak", "glory", "knife", "mirth", "roast", "vixen", "blush", "smart", "crane", "blink", "unzip", "quark", "nudge", "chart", "yacht", "plumb", "lemon", "flint", "grind","pants","crowd","crime","clime","steam","clean"
+    "amble", "abide", "acrid", "acute", "agile", "agony","album", "aloft","ample","baton","bough","cargo","carol","chard","comet","cleft", "lemon", "magic", "noble", "ocean", "piano", "tiger", "vocal", "early", "fancy", "great", "lucky", "nasty", "olive", "proud", "quick", "rusty", "shiny", "tidy", "ugly", "white", "young", "zebra", "abide", "bring", "drink", "enjoy", "fight", "gather", "hover", "joust", "knit", "laugh", "mourn", "print", "query", "relax", "surge", "travel", "upend", "value", "whirl", "chase", "expand", "flirt", "gather", "organ", "relax", "savor", "whisk", "yearn","longword","hi","cloak", "glory", "knife", "mirth", "roast", "vixen", "blush", "smart", "crane", "blink", "unzip", "quark", "nudge", "chart", "yacht", "plumb", "lemon", "flint", "wrung","waltz","valet","whisk","topaz","yacht","triad","thyme","staid","snarl","ramen","quirk","quart"
 ]
 
 function filterWords(wordOptions) {
@@ -92,6 +93,21 @@ console.log(deleteBtn)
 let resetBtn=document.getElementById('resetBtn')
 console.log(resetBtn)
 
+resetBtn.addEventListener('click',handleReset)
+
+function handleReset() {
+init()
+resetKeysStatus()
+for (let i = 0; i < squareEls.length; i++) {
+    squareEls[i].innerText = ""
+    squareEls[i].style.backgroundColor = "rgb(251, 252, 255)"
+}
+for (let i = 0; i < letterEls.length; i++) {
+    letterEls[i].style.backgroundColor = "rgb(221,225,236)"
+    letterEls[i].style.color = "rgba(58, 62, 75)"
+}
+console.log(keysStatus)
+}
 // ________________________________________________________________________________________________________________
 
 // 3. Upon loading, the game state should be initialized,
@@ -116,11 +132,11 @@ function init() {
         [null, null, null, null, null],
     ]
     generateKeysStatus()
+    resetKeysStatus()
     console.log(keysStatus)
     guessNum=1
     correctlyGuessed=false
     gameOver=false
-    console.log("game over: " + gameOver)
     function generateTargetWord() {
         let index = Math.floor(Math.random()*filteredWordOptions.length)
         targetWord=filteredWordOptions[index]
@@ -132,7 +148,6 @@ function init() {
     if (targetWord.length!==5) {
         generateTargetWord()
     }
-    //render() // --------->UNHIDE LATER~!!!!!
 }
 console.log(board)
 
@@ -214,9 +229,12 @@ function updateSquaresColor() {
 // [TO DO] 4. Create `updateMessage` function
 function updateMessage() {
     if(gameOver===true) {
-        messageEl.innerText="Shagadelic!"
+        if(correctlyGuessed===true) {
+            messageEl.innerText="Nicely done! Click reset to play again."}
+        else {messageEl.innerText="The word was " + targetWord + ". Click reset to play again."}
     }
 } 
+
 // If isGameOver=true
 // If correctlyGuessed= true (ensure this is scoped to be accessible), update messageEl to “You won! Game Over!”, else if gameOver = true update messageEl to ““Unfortunately you did not guess the correct word. Play again?”
 // else if gameOver = false update messageEl to “Guess again”
@@ -237,11 +255,8 @@ function turnsPlayed() {
 // [X] Create handleClick function that handles player clicking on keyboard
 
 function handleClick(event) {
-    console.log(event.target.innerText + " was clicked!")
     updateBoard(event) 
     updateBoardArr(event)
-    console.log(board)
-    console.log("Gameover: " + gameOver)
 }
 
 // [X] Update the values in the board array** with the same letter contained in the click target element’s (key’s) innerText
@@ -276,10 +291,8 @@ function updateBoard(event) {
     }
     console.log(includedIds)
     let firstNullIndex = board[index].findIndex(guessLetter => guessLetter === null)
-    console.log(includedIds[firstNullIndex])
     if (firstNullIndex !== -1) {
         let squareId = "sq" + includedIds[firstNullIndex];
-        console.log(squareId);
         document.getElementById(squareId).innerText = event.target.innerText;
     }
 }
@@ -297,7 +310,7 @@ function updateKeysStatus() {
         turn.forEach(function(guessLetter, letterIndex) {
             console.log(guessLetter);
             const letterObject = keysStatus.find(obj => obj.letter === guessLetter);
-            console.log('Letter object:', letterObject);
+            if (letterObject) {
             const correctIndices = []
             targetWord.split('').forEach((letter, index) => {
                 console.log(letter)
@@ -312,6 +325,7 @@ function updateKeysStatus() {
             } else {
                 letterObject.status = "Incorrectly Placed";
             }
+        }
         });
     });
 }
@@ -330,6 +344,7 @@ function handleSubmit() {
     isCorrectlyGuessed()
     isGameOver()
     updateMessage()
+    console.log(keysStatus)
 }
 
 function isCorrectlyGuessed() {
@@ -346,7 +361,7 @@ function isGameOver() {
     console.log((correctlyGuessed === true || guessNum > maxTurns))
     if (correctlyGuessed === true || guessNum > maxTurns) {
         gameOver = true
-        confetti()
+        // confetti()
     }
     console.log({
         gameOver,
@@ -354,7 +369,9 @@ function isGameOver() {
     });
 }
 
-/* function confetti() {
+
+/*
+function confetti() {
     if(gameOver===true) {
         const confettiCount = 1000;
         const confettiWrapper = document.getElementById('confetti-wrapper');
