@@ -162,9 +162,10 @@ function updateSquaresColor() {
 }
 
 function updateMessage() {
+    let tries=guessNum-1
     if(gameOver===true) {
         if(correctlyGuessed===true) {
-            messageEl.innerText="Nicely done! Click reset to play again."}
+            messageEl.innerText="Nicely done! You guessed the word in " + tries + " turns. Click reset to play again."}
         else {messageEl.innerText="The word was " + targetWord + ". Click reset to play again."}
     }
 } 
@@ -266,12 +267,21 @@ function updateKeysStatus() {
 submitBtn.addEventListener('click',handleSubmit)
 
 function handleSubmit() {
-    blingSound.play()
-    render()
-    turnsPlayed()
-    isCorrectlyGuessed()
-    isGameOver()
-    updateMessage()
+    board.forEach(function(turn,turnIndex) {
+        if(turnIndex === guessNum - 1) {
+            let turnContainsNull=turn.some(guessLetter=> guessLetter===null)
+            if(turnContainsNull) {
+                return
+        } else {
+            blingSound.play()
+            render()
+            turnsPlayed()
+            isCorrectlyGuessed()
+            isGameOver()
+            updateMessage()
+        }
+        }
+    })
 }
 
 function isCorrectlyGuessed() {
@@ -286,7 +296,6 @@ function isCorrectlyGuessed() {
 deleteBtn.addEventListener('click',handleDelete)
 
 function handleDelete() {
-    console.log("delete was clicked")
     board.forEach(function(turn,turnIndex) {
     if(turnIndex === guessNum - 1) {
         let turnContainsNull=turn.some(guessLetter=> guessLetter===null)
@@ -328,7 +337,7 @@ function isGameOver() {
     let maxTurns=6
     if (correctlyGuessed === true || guessNum > maxTurns) {
         gameOver = true
-        // confetti()
+        //confetti()
     }
 }
 
