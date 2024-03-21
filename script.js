@@ -136,29 +136,42 @@ function updateKeysColor() {
 
 
 function updateSquaresColor() {
-    for (let i = 0; i < squareEls.length; i++) {
-        let currentSquare=squareEls[i].innerText
-        let keyStatusObj = keysStatus.find(obj => obj.letter.toUpperCase() === currentSquare.toUpperCase());
-        if (keyStatusObj) {
-            // If a matching key status object is found
-            switch(keyStatusObj.status) {
-                case "Correctly Placed":
-                    squareEls[i].style.backgroundColor = "rgb(135,182,94)";
-                    squareEls[i].style.color = "white";
-                    break;
-                case "Incorrectly Placed":
-                    squareEls[i].style.backgroundColor = "rgb(235,196,84)";
-                    squareEls[i].style.color = "white";
-                    break;
-                case "Incorrect":
-                    squareEls[i].style.backgroundColor = "rgb(166,174,194)";
-                    squareEls[i].style.color = "white";
-                    break;
-                default:
-                    squareEls[i].style.color = "black"; // Default color or any other color for 'Not Guessed'
-            }
+        let includedIds = [];
+        if (guessNum === 1) {
+            includedIds = [0, 1, 2, 3, 4];
+        } else if (guessNum === 2) {
+            includedIds = [5, 6, 7, 8, 9];
+        } else if (guessNum === 3) {
+            includedIds = [10, 11, 12, 13, 14];
+        } else if (guessNum === 4) {
+            includedIds = [15, 16, 17, 18, 19];
+        } else if (guessNum === 5) {
+            includedIds = [20, 21, 22, 23, 24];
+        } else if (guessNum === 6) {
+            includedIds = [25, 26, 27, 28, 29];
+        }
+        for (let i =includedIds[0]; i<=includedIds[4]; i++) {
+            let currentSquare=squareEls[i].innerText
+            let keyStatusObj = keysStatus.find(obj => obj.letter.toUpperCase() === currentSquare.toUpperCase())
+            if (keyStatusObj) {
+                switch(keyStatusObj.status) {
+                    case "Correctly Placed":
+                        squareEls[i].style.backgroundColor = "rgb(135,182,94)";
+                        squareEls[i].style.color = "white"
+                        break;
+                    case "Incorrectly Placed":
+                        squareEls[i].style.backgroundColor = "rgb(235,196,84)";
+                        squareEls[i].style.color = "white"
+                        break;
+                    case "Incorrect":
+                        squareEls[i].style.backgroundColor = "rgb(166,174,194)";
+                        squareEls[i].style.color = "white"
+                        break;
+                    default:
+                        squareEls[i].style.color = "black"
         }
     }
+}
 }
 
 function updateMessage() {
