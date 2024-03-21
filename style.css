@@ -100,9 +100,17 @@ body {
     height: 50px;
   }
   #gameStatus {
+    text-decoration: none;
     font-family: 'Space Mono', serif;
     font-size: 15px;
     padding: 0px;
+  }
+
+  #resetBtn {
+    background-color: gray;
+    color: white;
+    margin: 0px 0px 20px 0px;
+    font-family: 'Space Mono', sans-serif;
   }
   
   .leftBorder { 
@@ -118,7 +126,9 @@ body {
   }
   
   .bottomBorder { 
-    grid-area: bottomBorder; 
+    grid-area: bottomBorder;
+    display: flex;
+    justify-content: flex-end; 
   }
   
   #sq0 { 
