@@ -99,6 +99,7 @@ function handleReset() {
 init()
 resetKeysStatus()
 for (let i = 0; i < squareEls.length; i++) {
+    squareEls[i].style.color = "rgba(58, 62, 75)"
     squareEls[i].innerText = ""
     squareEls[i].style.backgroundColor = "rgb(251, 252, 255)"
 }
@@ -132,7 +133,6 @@ function init() {
         [null, null, null, null, null],
     ]
     generateKeysStatus()
-    resetKeysStatus()
     console.log(keysStatus)
     guessNum=1
     correctlyGuessed=false
