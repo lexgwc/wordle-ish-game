@@ -337,14 +337,14 @@ function isGameOver() {
     let maxTurns=6
     if (correctlyGuessed === true || guessNum > maxTurns) {
         gameOver = true
-        //confetti()
+        confetti()
     }
 }
 
 
-/*
+
 function confetti() {
-    if(gameOver===true) {
+    if(correctlyGuessed===true) {
         const confettiCount = 1000;
         const confettiWrapper = document.getElementById('confetti-wrapper');
       
@@ -359,8 +359,6 @@ function confetti() {
           animateConfetti(confetti);
           confettiWrapper.appendChild(confetti);
         }
-      }
-      
       function animateConfetti(confetti) {
         const confettiWrapper = document.getElementById('confetti-wrapper');
         const maxX = confettiWrapper.offsetWidth;
@@ -395,5 +393,4 @@ function confetti() {
         requestAnimationFrame(updateConfetti);
       }    
     }
-
-    */
+} 
