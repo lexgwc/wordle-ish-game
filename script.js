@@ -67,13 +67,7 @@ let messageEl = document.getElementById('gameStatus')
 //     2. Create **variable** letterEls to represent the lettered keys on keyboard
 let letterEls=document.getElementsByClassName('keyBtn letter')
 
-//GET RID OF THIS LATER
-let alphabetArr=[]
-for (let i = 0; i < letterEls.length; i++) {
-    alphabetArr.push(letterEls[i].innerText)
-}
-
-// GET RID UP TO HERE
+const sound = document.getElementById('clickSound')
 
 //     3. Create **variable** squareEls to represent the squares on the board
 let squareEls = document.getElementsByClassName('squareEl')
@@ -244,6 +238,7 @@ function turnsPlayed() {
 // [X] Create handleClick function that handles player clicking on keyboard
 
 function handleClick(event) {
+    sound.play()
     updateBoard(event) 
     updateBoardArr(event)
 }
@@ -290,7 +285,6 @@ function updateBoard(event) {
 
 function updateKeysStatus() {
     board.forEach(function(turn, turnIndex) {
-        console.log(turn)
         if (turnIndex > guessNum - 1) {
             return;
         } 
@@ -299,7 +293,6 @@ function updateKeysStatus() {
             if (letterObject) {
             const correctIndices = []
             targetWord.split('').forEach((letter, index) => {
-                console.log(letter)
                 if (letter === guessLetter) { 
                     correctIndices.push(index);
                 }
@@ -330,7 +323,6 @@ function handleSubmit() {
     isCorrectlyGuessed()
     isGameOver()
     updateMessage()
-    console.log(keysStatus)
 }
 
 function isCorrectlyGuessed() {
@@ -344,15 +336,10 @@ function isCorrectlyGuessed() {
 
 function isGameOver() {
     let maxTurns=6
-    console.log((correctlyGuessed === true || guessNum > maxTurns))
     if (correctlyGuessed === true || guessNum > maxTurns) {
         gameOver = true
         // confetti()
     }
-    console.log({
-        gameOver,
-        guessNum
-    });
 }
 
 
