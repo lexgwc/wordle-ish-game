@@ -1,14 +1,7 @@
-// # Pseudocode
 
-// ________________________________________________________________________________________________________________
-// Define the required variables used to track the state of the game
-
-
-//     1. Use an array of arrays named `board` to represent the state of the squares on the board (i.e. whether they’re empty or contain letters)
 
 let board = []
 
-//     2. Use an array of objects named `keysStatus` to represent the state of the keys on the keyboard (i.e. whether they’ve been guessed correctly, incorrectly, or not guessed)
 
 class LetterObj {
     constructor(letter, status) {
@@ -18,6 +11,8 @@ class LetterObj {
 }
 
 let keysStatus = []
+
+let includedIds = []
 
 function generateKeysStatus() {
     let alphabet = 'abcdefghijklmnopqrstuvwxyz'
@@ -34,11 +29,8 @@ function resetKeysStatus() {
     keysStatus.forEach(letterObj => letterObj.status="Not Guessed")
 }
 
-
-//     3. Use a variable named `guessNum` to track which turn it is (and therefore which line the guess letters will go in)
-
 let guessNum
-//     4. Use an array named wordOptions to store 5-letter words
+
 const wordOptions = [
     "amble", "abide", "acrid", "acute", "agile", "agony","album", "aloft","ample","baton","bough","cargo","carol","chard","comet","cleft", "lemon", "magic", "noble", "ocean", "piano", "tiger", "vocal", "early", "fancy", "great", "lucky", "nasty", "olive", "proud", "quick", "rusty", "shiny", "tidy", "ugly", "white", "young", "zebra", "abide", "bring", "drink", "enjoy", "fight", "gather", "hover", "joust", "knit", "laugh", "mourn", "print", "query", "relax", "surge", "travel", "upend", "value", "whirl", "chase", "expand", "flirt", "gather", "organ", "relax", "savor", "whisk", "yearn","longword","hi","cloak", "glory", "knife", "mirth", "roast", "vixen", "blush", "smart", "crane", "blink", "unzip", "quark", "nudge", "chart", "yacht", "plumb", "lemon", "flint", "wrung","waltz","valet","whisk","topaz","yacht","triad","thyme","staid","snarl","ramen","quirk","quart"
 ]
@@ -134,9 +126,7 @@ function updateKeysColor() {
     }
 }
 
-
-function updateSquaresColor() {
-        let includedIds = [];
+function findIncludedIds() {
         if (guessNum === 1) {
             includedIds = [0, 1, 2, 3, 4];
         } else if (guessNum === 2) {
@@ -150,6 +140,10 @@ function updateSquaresColor() {
         } else if (guessNum === 6) {
             includedIds = [25, 26, 27, 28, 29];
         }
+}
+
+function updateSquaresColor() {
+        findIncludedIds()
         for (let i =includedIds[0]; i<=includedIds[4]; i++) {
             let currentSquare=squareEls[i].innerText
             let keyStatusObj = keysStatus.find(obj => obj.letter.toUpperCase() === currentSquare.toUpperCase())
@@ -228,20 +222,7 @@ return board
 
 function updateBoard(event) {
     let index = guessNum - 1
-    let includedIds = [];
-    if (guessNum === 1) {
-        includedIds = [0, 1, 2, 3, 4];
-    } else if (guessNum === 2) {
-        includedIds = [5, 6, 7, 8, 9];
-    } else if (guessNum === 3) {
-        includedIds = [10, 11, 12, 13, 14];
-    } else if (guessNum === 4) {
-        includedIds = [15, 16, 17, 18, 19];
-    } else if (guessNum === 5) {
-        includedIds = [20, 21, 22, 23, 24];
-    } else if (guessNum === 6) {
-        includedIds = [25, 26, 27, 28, 29];
-    }
+    findIncludedIds()
     let firstNullIndex = board[index].findIndex(guessLetter => guessLetter === null)
     if (firstNullIndex !== -1) {
         let squareId = "sq" + includedIds[firstNullIndex];
@@ -319,22 +300,8 @@ function handleDelete() {
         }
     }
     })
-    console.log(board)
     let index = guessNum - 1
-    let includedIds = [];
-    if (guessNum === 1) {
-        includedIds = [0, 1, 2, 3, 4];
-    } else if (guessNum === 2) {
-        includedIds = [5, 6, 7, 8, 9];
-    } else if (guessNum === 3) {
-        includedIds = [10, 11, 12, 13, 14];
-    } else if (guessNum === 4) {
-        includedIds = [15, 16, 17, 18, 19];
-    } else if (guessNum === 5) {
-        includedIds = [20, 21, 22, 23, 24];
-    } else if (guessNum === 6) {
-        includedIds = [25, 26, 27, 28, 29];
-    }
+    findIncludedIds()
     let firstNullIndex = board[index].findIndex(guessLetter => guessLetter === null)
     if (firstNullIndex !== -1) {
         let squareId = "sq" + includedIds[firstNullIndex];
