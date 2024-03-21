@@ -259,3 +259,33 @@ body {
     opacity: 0.7;
   }
   
+  @media (max-width: 700px) {
+    .container {
+      grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+      grid-template-rows: 1.0fr 0.9fr 0.9fr 0.9fr 0.9fr 0.9fr 0.9fr 0.4fr 0.5fr 0.3fr;
+    }
+
+    .Title {
+      font-size: 30px;
+    }
+
+    .squareEl {
+      height: 30px;
+    }
+
+    .keyBtn {
+      height: 5px;
+      width: 10px;
+      margin: 3px;
+      padding: 15px;
+    }
+
+    #submitBtn {
+      width: 50px;
+    }
+
+    #deleteBtn {
+      width: 75px;
+    }
+  }
+  
