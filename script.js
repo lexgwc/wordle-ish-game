@@ -48,7 +48,7 @@ function filterWords(wordOptions) {
 }
 
 let filteredWordOptions=filterWords(wordOptions)
-console.log(filteredWordOptions)
+
 //     5. Use a variable named targetWord to store the word the player is supposed to guess, from the wordOptions list of 5-letter words
 
 let targetWord 
@@ -63,35 +63,33 @@ let gameOver
 
 //     1. Create **variable** messageEl to represent the element that shows the game status
 let messageEl = document.getElementById('gameStatus')
-console.log(messageEl.innerText)
+
 //     2. Create **variable** letterEls to represent the lettered keys on keyboard
 let letterEls=document.getElementsByClassName('keyBtn letter')
-
-console.log(letterEls)
 
 //GET RID OF THIS LATER
 let alphabetArr=[]
 for (let i = 0; i < letterEls.length; i++) {
     alphabetArr.push(letterEls[i].innerText)
 }
-console.log(alphabetArr);
+
 // GET RID UP TO HERE
 
 //     3. Create **variable** squareEls to represent the squares on the board
 let squareEls = document.getElementsByClassName('squareEl')
-console.log(squareEls)
+
 
 //     4. Create **variable** submitBtn to represent the enter button on keyboard
 let submitBtn=document.getElementById('submitBtn')
-console.log(submitBtn)
+
 //     5. Create **variable** deleteEl to represent the backspace key on keyboard
 let deleteBtn=document.getElementById('deleteBtn')
-console.log(deleteBtn)
+
 
 //     6. Create **variable** resetBtn to represent the Play Again button on the keyboard
 
 let resetBtn=document.getElementById('resetBtn')
-console.log(resetBtn)
+
 
 resetBtn.addEventListener('click',handleReset)
 
@@ -107,7 +105,7 @@ for (let i = 0; i < letterEls.length; i++) {
     letterEls[i].style.backgroundColor = "rgb(221,225,236)"
     letterEls[i].style.color = "rgba(58, 62, 75)"
 }
-console.log(keysStatus)
+messageEl.innerText=""
 }
 // ________________________________________________________________________________________________________________
 
@@ -133,7 +131,6 @@ function init() {
         [null, null, null, null, null],
     ]
     generateKeysStatus()
-    console.log(keysStatus)
     guessNum=1
     correctlyGuessed=false
     gameOver=false
@@ -144,18 +141,11 @@ function init() {
     }
     generateTargetWord()
     console.log("Target word is: " + targetWord)
-    console.log("Target word length is " + targetWord.length)
     if (targetWord.length!==5) {
         generateTargetWord()
     }
 }
-console.log(board)
 
-console.log(keysStatus)
-
-//updateKeysStatus() //---->REMOVE ALL OF THIS LATER
-
-keysStatus.forEach(obj => console.log(obj))
 
 // [X]    2. Create render() function and call at end of init(). Set aside for now
 
@@ -173,7 +163,6 @@ function render() {
 function updateKeysColor() {
     for (let i = 0; i < letterEls.length; i++) {
         let currentLetter=letterEls[i].innerText
-        console.log(currentLetter)
         let keyStatusObj = keysStatus.find(obj => obj.letter.toUpperCase() === currentLetter.toUpperCase());
         if (keyStatusObj) {
             switch(keyStatusObj.status) {
@@ -274,7 +263,6 @@ return board
 // [X] Create a function that **updates the squareEls innerText with values from board array** (on the line of the current Turn) 
 function updateBoard(event) {
     let index = guessNum - 1
-    console.log(index + ", index")
     let includedIds = [];
     if (guessNum === 1) {
         includedIds = [0, 1, 2, 3, 4];
@@ -289,7 +277,6 @@ function updateBoard(event) {
     } else if (guessNum === 6) {
         includedIds = [25, 26, 27, 28, 29];
     }
-    console.log(includedIds)
     let firstNullIndex = board[index].findIndex(guessLetter => guessLetter === null)
     if (firstNullIndex !== -1) {
         let squareId = "sq" + includedIds[firstNullIndex];
@@ -308,7 +295,6 @@ function updateKeysStatus() {
             return;
         } 
         turn.forEach(function(guessLetter, letterIndex) {
-            console.log(guessLetter);
             const letterObject = keysStatus.find(obj => obj.letter === guessLetter);
             if (letterObject) {
             const correctIndices = []
