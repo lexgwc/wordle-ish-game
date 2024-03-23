@@ -57,9 +57,9 @@ const blingSound = document.getElementById('bling-sound')
 
 let squareEls = document.getElementsByClassName('squareEl')
 
-let submitBtn=document.getElementById('submitBtn')
+let submitBtn=document.getElementById('submit-btn')
 
-let deleteBtn=document.getElementById('deleteBtn')
+let deleteBtn=document.getElementById('delete-btn')
 
 let resetBtn=document.getElementById('reset-btn')
 
