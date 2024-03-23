@@ -63,7 +63,22 @@ let deleteBtn=document.getElementById('deleteBtn')
 
 let resetBtn=document.getElementById('resetBtn')
 
+let infoButton=document.getElementById('open-button')
 
+let closeInfoButton=document.getElementById('close-button')
+
+let info=document.getElementById('info')
+
+infoButton.addEventListener('click',openDialog)
+
+function openDialog() {
+    info.showModal()
+}
+closeInfoButton.addEventListener('click',closeDialog)
+
+function closeDialog() {
+    info.close()
+}
 
 
 window.onload = init()
@@ -87,7 +102,6 @@ function init() {
         return targetWord
     }
     generateTargetWord()
-    console.log("Target word is: " + targetWord)
     if (targetWord.length!==5) {
         generateTargetWord()
     }

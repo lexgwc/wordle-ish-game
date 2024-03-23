@@ -90,6 +90,19 @@
         <div id="sq27" class="squareEl"></div>
         <div id="sq28" class="squareEl"></div>
         <div id="sq29" class="squareEl"></div>
+        <dialog id="info"> 
+            <h3> Game Rules </h3>
+            <button id="close-button">X</button>
+            <p><span class="bold">Objective:</span> Guess the hidden 5-letter word within six tries.</p>
+            <p><span class="bold">Guessing:</span> Each guess must be a valid 5-letter word with no duplicate letters. Hit 'enter' to submit.</p>
+            <p><span class="bold">Feedback:</span> After each guess, the color of the letters changes to show how close your guess was to the word.
+                <ul>
+                    <li> <span class="bold green">Green:</span> The letter is in the word and in the correct spot.</li>
+                    <li> <span class="bold yellow">Yellow:</span> The letter is in the word but in the wrong spot.</li>
+                    <li> <span class="bold gray">Gray:</span> The letter is not in the word at all.</li>
+            </ul>
+            </p>
+        </dialog>
         <div id="confetti-wrapper" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none;"></div>
       </div>
 </body>

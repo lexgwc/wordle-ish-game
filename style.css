@@ -84,6 +84,35 @@ body {
     height: 30px;
     border-radius: 50%;
   }
+
+  #close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .green {
+    color: rgb(135,182,94);
+  }
+
+  .yellow {
+    color: rgb(235,196,84);
+  }
+
+  .gray {
+    color: gray;
+  }
+
+  dialog {
+    position: absolute;
+    top: 10%;
+    margin: 0px 40px 0px 40px
+
+  }
   
   .Title { 
     margin-top: 40px;
