@@ -27,7 +27,6 @@ body {
   }
   
 
-
   .squareEl {
     background-color: rgb(251,252,255);
     border: 2px solid rgb(197,203,219);
@@ -75,6 +74,15 @@ body {
     display: flex;
     justify-content:center;
     flex-wrap: wrap;
+  }
+
+  #open-button {
+    position: absolute;
+    top: 20px; 
+    right: 20px; 
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
   }
   
   .Title { 
