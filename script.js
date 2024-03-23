@@ -47,13 +47,13 @@ let targetWord
 let correctlyGuessed
 let gameOver
 
-let messageEl = document.getElementById('gameStatus')
+let messageEl = document.getElementById('game-status')
 
 let letterEls=document.getElementsByClassName('keyBtn letter')
 
-const sound = document.getElementById('clickSound')
+const sound = document.getElementById('click-sound')
 
-const blingSound = document.getElementById('blingSound')
+const blingSound = document.getElementById('bling-sound')
 
 let squareEls = document.getElementsByClassName('squareEl')
 
@@ -61,7 +61,7 @@ let submitBtn=document.getElementById('submitBtn')
 
 let deleteBtn=document.getElementById('deleteBtn')
 
-let resetBtn=document.getElementById('resetBtn')
+let resetBtn=document.getElementById('reset-btn')
 
 let infoButton=document.getElementById('open-button')
 

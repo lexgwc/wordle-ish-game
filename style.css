@@ -110,8 +110,7 @@ body {
   dialog {
     position: absolute;
     top: 10%;
-    margin: 0px 40px 0px 40px
-
+    margin: auto;
   }
   
   .Title { 
@@ -135,33 +134,33 @@ body {
   #logo {
     height: 50px;
   }
-  #gameStatus {
+  #game-status {
     text-decoration: none;
     font-family: 'Space Mono', serif;
     font-size: 15px;
     padding: 0px;
   }
 
-  #resetBtn {
+  #reset-btn {
     background-color: gray;
     color: white;
     margin: 0px 0px 20px 0px;
     font-family: 'Space Mono', sans-serif;
   }
   
-  .leftBorder { 
+  .left-border { 
     grid-area: leftBorder; 
   }
   
-  .rightBorder { 
+  .right-border { 
     grid-area: rightBorder; 
   }
   
-  .middleBorder { 
+  .middle-border { 
     grid-area: middleBorder; 
   }
   
-  .bottomBorder { 
+  .bottom-border { 
     grid-area: bottomBorder;
     display: flex;
     justify-content: flex-end; 
