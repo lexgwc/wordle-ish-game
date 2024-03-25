@@ -27,7 +27,6 @@ body {
   }
   
 
-
   .squareEl {
     background-color: rgb(251,252,255);
     border: 2px solid rgb(197,203,219);
@@ -42,7 +41,7 @@ body {
     transition: background-color 0.3s ease;
   }  
 
-#submitBtn, #deleteBtn{
+#submit-btn, #delete-btn{
     width: 100px;
 }
   .keyBtn {
@@ -67,7 +66,6 @@ body {
     cursor: pointer;
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
   }
 
   .keyboard { 
@@ -75,6 +73,43 @@ body {
     display: flex;
     justify-content:center;
     flex-wrap: wrap;
+  }
+
+  #open-button {
+    position: absolute;
+    top: 20px; 
+    right: 20px; 
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+
+  #close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .green {
+    color: rgb(135,182,94);
+  }
+
+  .yellow {
+    color: rgb(235,196,84);
+  }
+
+  .gray {
+    color: gray;
+  }
+
+  dialog {
+    position: absolute;
+    top: 10%;
+    margin: auto;
   }
   
   .Title { 
@@ -98,33 +133,33 @@ body {
   #logo {
     height: 50px;
   }
-  #gameStatus {
+  #game-status {
     text-decoration: none;
     font-family: 'Space Mono', serif;
     font-size: 15px;
     padding: 0px;
   }
 
-  #resetBtn {
+  #reset-btn {
     background-color: gray;
     color: white;
     margin: 0px 0px 20px 0px;
     font-family: 'Space Mono', sans-serif;
   }
   
-  .leftBorder { 
+  .left-border { 
     grid-area: leftBorder; 
   }
   
-  .rightBorder { 
+  .right-border { 
     grid-area: rightBorder; 
   }
   
-  .middleBorder { 
+  .middle-border { 
     grid-area: middleBorder; 
   }
   
-  .bottomBorder { 
+  .bottom-border { 
     grid-area: bottomBorder;
     display: flex;
     justify-content: flex-end; 

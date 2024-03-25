@@ -47,23 +47,38 @@ let targetWord
 let correctlyGuessed
 let gameOver
 
-let messageEl = document.getElementById('gameStatus')
+let messageEl = document.getElementById('game-status')
 
 let letterEls=document.getElementsByClassName('keyBtn letter')
 
-const sound = document.getElementById('clickSound')
+const sound = document.getElementById('click-sound')
 
-const blingSound = document.getElementById('blingSound')
+const blingSound = document.getElementById('bling-sound')
 
 let squareEls = document.getElementsByClassName('squareEl')
 
-let submitBtn=document.getElementById('submitBtn')
+let submitBtn=document.getElementById('submit-btn')
 
-let deleteBtn=document.getElementById('deleteBtn')
+let deleteBtn=document.getElementById('delete-btn')
 
-let resetBtn=document.getElementById('resetBtn')
+let resetBtn=document.getElementById('reset-btn')
 
+let infoButton=document.getElementById('open-button')
 
+let closeInfoButton=document.getElementById('close-button')
+
+let info=document.getElementById('info')
+
+infoButton.addEventListener('click',openDialog)
+
+function openDialog() {
+    info.showModal()
+}
+closeInfoButton.addEventListener('click',closeDialog)
+
+function closeDialog() {
+    info.close()
+}
 
 
 window.onload = init()
@@ -87,7 +102,6 @@ function init() {
         return targetWord
     }
     generateTargetWord()
-    console.log("Target word is: " + targetWord)
     if (targetWord.length!==5) {
         generateTargetWord()
     }
