@@ -23,17 +23,15 @@
 - **Timeline**:
     
     
-    | Date | MVP Item | Met Goal (Y/N) | Notes |
-    | --- | --- | --- | --- |
-    | 3/18 | Basic game layout | Y | Initial layout setup. |
-    | 3/19 | Game logic implementation | Y | Worked on 1) target word generation, 2) tracking key status, 3) updating key and square colors based on key status, 4) updating board squares with letters upon letter clicks. |
-    | 3/20 | Finalize functionality | N | Out sick |
-    | 3/21 | Finalize functionality
-    Sound effects | Y | Implemented backspace and reset functionality.
-    Added keypress sounds, and sound for correct guess.
-    Added confetti. |
-    | 3/22 | Styling and responsive design | Y | Focused on mobile-first design. |
-    | 3/23 | Deployment | Y | Game is live! |
+| Date | MVP Item                     | Met Goal (Y/N) | Notes                                                                                                                                                                      |
+|------|------------------------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 3/18 | Basic game layout            | Y              | Initial layout setup.                                                                                                                                                      |
+| 3/19 | Game logic implementation    | Y              | Worked on 1) target word generation, 2) tracking key status, 3) updating key and square colors based on key status, 4) updating board squares with letters upon letter clicks. |
+| 3/20 | Finalize functionality       | N              | Out sick                                                                                                                                                                   |
+| 3/21 | Finalize functionality <br> Sound effects | Y              | Implemented backspace and reset functionality. <br> Added keypress sounds, and sound for correct guess. <br> Added confetti.                                                |
+| 3/22 | Styling and responsive design| Y              | Focused on mobile-first design.                                                                                                                                            |
+| 3/23 | Deployment                   | Y              | Game is live!                                                                                                                                                              |
+
 - **Attributions**:
     - Click sound: https://elements.envato.com/quest-game-ui-simple-click-1-mouse-6NFY5BK
     - Bling sound on win: https://elements.envato.com/coin-bling-F6MRYCR
