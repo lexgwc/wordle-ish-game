@@ -102,6 +102,7 @@ function init() {
         return targetWord
     }
     generateTargetWord()
+    console.log("Target word is: " + targetWord)
     if (targetWord.length!==5) {
         generateTargetWord()
     }
